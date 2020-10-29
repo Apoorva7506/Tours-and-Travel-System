@@ -32,18 +32,7 @@
       crossorigin="anonymous"
     />
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-      integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-      crossorigin="anonymous"
-    ></script>
-    <!-- favicon img -->
-    <link
-      rel="shortcut icon"
-      type="image/icon"
-      href="assets/logo/favicon.png"
-    />
+  
 
     <!--font-awesome.min.css-->
     <link
@@ -51,22 +40,8 @@
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
 
-    <!--animate.css-->
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.css"
-    />
-
-    <!--datepicker.css-->
-    <link rel="stylesheet" href="assets/css/datepicker.css" />
-
     <!--style.css-->
-    <link rel="stylesheet" href="assets/css/style.css" />
-
-    <!--responsive.css-->
-    <link rel="stylesheet" href="assets/css/responsive.css" />
-
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
@@ -97,13 +72,13 @@
                 <!-- /.navbar-header-->
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav navbar-right">
-                    <li class="smooth-menu"><a href="#home">home</a></li>
+                    <li class="smooth-menu"><a href="#home" style="color:#00d8ff">home</a></li>
                     <li class="smooth-menu">
-                      <a href="#gallery">Destination</a>
+                      <a href="#gallery" style="color:#00d8ff">Destination</a>
                     </li>
-                    <li class="smooth-menu"><a href="#pack">Packages </a></li>
+                    <li class="smooth-menu"><a href="#pack" style="color:#00d8ff">Packages </a></li>
                     <li>
-                      <button class="book-btn">book now</button>
+                      <button class="book-btn" >book now</button>
                     </li>
                     <!--/.project-btn-->
                   </ul>
@@ -124,9 +99,44 @@
     </header>
     <!-- /.top-area-->
     <!-- main-menu End -->
-
-    <section id="home" class="about-us"></section>
-
+    
+      <div class="container"> 
+        <div id="myCarousel" class="carousel slide carclass" data-ride="carousel" style="width:70%;margin:auto">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="jk.jpg"  style="width:100%;">
+            </div>
+      
+            <div class="item">
+              <img src="agra.jpg"  style="width:100%;">
+            </div>
+          
+            <div class="item">
+              <img src="punjab.jpg" style="width:100%;">
+            </div>
+            <div class="item">
+              <img src="munnar.jpg" style="width:100%;">
+            </div>
+          </div>
+      
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+   
     <section class="travel-box">
       <div class="container">
         <div class="row">
@@ -230,11 +240,9 @@
                             <div class="travel-check-icon">
                               <form action="#">
                                 <input
-                                  type="text"
+                                  type="date"
                                   name="check_in"
                                   class="form-control"
-                                  data-toggle="datepicker"
-                                  placeholder="12 -01 - 2017 "
                                 />
                               </form>
                             </div>
@@ -250,11 +258,9 @@
                             <div class="travel-check-icon">
                               <form action="#">
                                 <input
-                                  type="text"
+                                  type="date"
                                   name="check_out"
                                   class="form-control"
-                                  data-toggle="datepicker"
-                                  placeholder="22 -01 - 2017 "
                                 />
                               </form>
                             </div>
@@ -376,11 +382,9 @@
                             <div class="travel-check-icon">
                               <form action="#">
                                 <input
-                                  type="text"
+                                  type="date"
                                   name="check_in"
                                   class="form-control"
-                                  data-toggle="datepicker"
-                                  placeholder="12 -01 - 2017 "
                                 />
                               </form>
                             </div>
@@ -396,11 +400,9 @@
                             <div class="travel-check-icon">
                               <form action="#">
                                 <input
-                                  type="text"
+                                  type="date"
                                   name="check_out"
                                   class="form-control"
-                                  data-toggle="datepicker"
-                                  placeholder="22 -01 - 2017 "
                                 />
                               </form>
                             </div>
@@ -532,11 +534,9 @@
                             <div class="travel-check-icon">
                               <form action="#">
                                 <input
-                                  type="text"
+                                  type="date"
                                   name="departure"
                                   class="form-control"
-                                  data-toggle="datepicker"
-                                  placeholder="12 -01 - 2017 "
                                 />
                               </form>
                             </div>
@@ -552,11 +552,9 @@
                             <div class="travel-check-icon">
                               <form action="#">
                                 <input
-                                  type="text"
+                                  type="date"
                                   name="return"
                                   class="form-control"
-                                  data-toggle="datepicker"
-                                  placeholder="22 -01 - 2017 "
                                 />
                               </form>
                             </div>
@@ -1090,34 +1088,8 @@
     </section>
     <!--/.packages-->
     <!--packages end-->
-
-    <script src="assets/js/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-
-    <!--modernizr.min.js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-
-    <!--bootstrap.min.js-->
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- jquery.filterizr.min.js -->
-    <script src="assets/js/jquery.filterizr.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-
-    <!--jquery-ui.min.js-->
-    <script src="assets/js/jquery-ui.min.js"></script>
-
-    <!--owl.carousel.js-->
-    <script src="assets/js/owl.carousel.min.js"></script>
-
-    <!-- jquery.sticky.js -->
-    <script src="assets/js/jquery.sticky.js"></script>
-
-    <!--datepicker.js-->
-    <script src="assets/js/datepicker.js"></script>
-
-    <!--Custom JS-->
-    <script src="assets/js/custom.js"></script>
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   </body>
 </html>
