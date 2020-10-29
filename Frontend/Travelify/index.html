@@ -78,7 +78,10 @@
                     </li>
                     <li class="smooth-menu"><a href="#pack" style="color:#00d8ff">Packages </a></li>
                     <li>
-                      <button class="book-btn" >book now</button>
+                      <button class="book-btn nav-link" >book now</button>
+                    </li>
+                    <li>
+                      <button class="book-btn"data-toggle="modal" data-target="#mm"  >Login</button>
                     </li>
                     <!--/.project-btn-->
                   </ul>
@@ -99,7 +102,44 @@
     </header>
     <!-- /.top-area-->
     <!-- main-menu End -->
-    
+    <div class="modal" id="mm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" style="color:#000">Login</h3>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+            <div class="modal-body">
+               
+                
+                <div class="panel panel-default res">
+                
+                    <div class="panel-body">
+                        <form action="{% url 'login' %}" method="POST">
+                            
+                            <div class="input-group-lg">
+                                
+                                
+                              <b><label for="username">Username:</label><br></b>
+                                <input type="text" class="form-control " placeholder="Username" name="username"><br>
+                                <b><label for="password">Password</label><br></b>
+                                <input type="password" class="form-control" placeholder="Password" name="password"><br>
+                                <input type="submit" class="book-btn " value="Submit">
+                        
+                        
+                       
+                   
+                         
+                        </div></form>
+                    </div>
+                    <br><br> 
+                         
+                 
+                             
+                            
+                    </div>
+            </div>
+        </div></div></div>
       <div class="container"> 
         <div id="myCarousel" class="carousel slide carclass" data-ride="carousel" style="width:70%;margin:auto">
           <!-- Indicators -->
