@@ -72,3 +72,20 @@ class Airways(models.Model):
     mot=models.ForeignKey(Mot,on_delete=models.CASCADE)
     foodAC=models.CharField(max_length=20)
     A_class=models.CharField(max_length=20)
+
+
+class Package(models.Model):
+    days=models.IntegerField()
+    hotel=models.ForeignKey(Hotel,on_delete=models.CASCADE)
+    mot=models.ForeignKey(Mot,on_delete=models.CASCADE)
+    destination=models.ForeignKey(Destination,on_delete=models.CASCADE)
+    cost=models.FloatField()
+
+class Booking(models.Model):
+    n_people=models.IntegerField()
+    trip_date=models.DateField()
+    total=models.FloatField()
+    rooms=models.IntegerField()
+    payment_mode=models.CharField(max_length=50)
+    package=models.ForeignKey(Package,on_delete=models.CASCADE)
+    customer=models.ForeignKey(Customer,on_delete=models.CASCADE)
