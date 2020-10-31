@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Travellify</title>
     <link
       href="https://fonts.googleapis.com/css?family=Rufina:400,700"
       rel="stylesheet"
@@ -13,34 +14,22 @@
       href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
       rel="stylesheet"
     />
-
-    <!-- TITLE OF SITE -->
-    <title>Travel</title>
-    <!-- Latest compiled and minified CSS -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
       integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
       crossorigin="anonymous"
     />
-
-    <!-- Optional theme -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
       integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
       crossorigin="anonymous"
     />
-
-  
-
-    <!--font-awesome.min.css-->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-
-    <!--style.css-->
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -51,14 +40,11 @@
           <div class="row">
             <div class="col-sm-2">
               <div class="logo">
-                <a href="index.html"> tour<span>Nest</span> </a>
+                <a href="index.html"> Trave<span>llify</span> </a>
               </div>
-              <!-- /.logo-->
             </div>
-            <!-- /.col-->
             <div class="col-sm-10">
               <div class="main-menu">
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                   <button
                     type="button"
@@ -66,22 +52,31 @@
                     data-toggle="collapse"
                     data-target=".navbar-collapse"
                   >
-                    <i class="fa fa-bars"></i></button
-                  ><!-- / button-->
+                    <i class="fa fa-bars"></i>
+                  </button>
                 </div>
-                <!-- /.navbar-header-->
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav navbar-right">
-                    <li class="smooth-menu"><a href="#home" style="color:#00d8ff">home</a></li>
                     <li class="smooth-menu">
-                      <a href="#gallery" style="color:#00d8ff">Destination</a>
+                      <a href="#home" style="color: #00d8ff">home</a>
                     </li>
-                    <li class="smooth-menu"><a href="#pack" style="color:#00d8ff">Packages </a></li>
-                    <li>
-                      <button class="book-btn nav-link" >book now</button>
+                    <li class="smooth-menu">
+                      <a href="#gallery" style="color: #00d8ff">Destination</a>
+                    </li>
+                    <li class="smooth-menu">
+                      <a href="#pack" style="color: #00d8ff">Packages </a>
                     </li>
                     <li>
-                      <button class="book-btn"data-toggle="modal" data-target="#mm"  >Login</button>
+                      <button class="book-btn nav-link">book now</button>
+                    </li>
+                    <li>
+                      <button
+                        class="book-btn"
+                        data-toggle="modal"
+                        data-target="#mm"
+                      >
+                        Login
+                      </button>
                     </li>
                     <!--/.project-btn-->
                   </ul>
@@ -104,80 +99,104 @@
     <!-- main-menu End -->
     <div class="modal" id="mm">
       <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header"style="background-color:#00d8ff">
-                <center><h3 class="modal-title" style="color:#fff">Login</h3></center>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="form-box">
+          <div class="button-box">
+            <div id="btn"></div>
+            <button type="button" class="toggle-btn" onclick="login()">
+              Sign In
+            </button>
+            <button type="button" class="toggle-btn" onclick="register()">
+              Sign up
+            </button>
           </div>
-            <div class="modal-body"style="background-color:black">
-               
-                
-                <div class="panel panel-default res">
-                
-                    <div class="panel-body">
-                        <form action="{% url 'login' %}" method="POST">
-                            
-                            <div class="input-group-lg">
-                                
-                                
-                              <b><label for="username">Username:</label><br></b>
-                                <input type="text" class="form-control " placeholder="Username" name="username"><br>
-                                <b><label for="password">Password</label><br></b>
-                                <input type="password" class="form-control" placeholder="Password" name="password"><br>
-                               <center> <input type="submit" class="book-btn " value="Submit"></center><br>
-                               <center><a href="#" style="color: #00d8f0;" ><h4>If You Don't have an Account <br>Sign Up?</h4></a></center>
-                        
-                        
-                       
-                   
-                         
-                        </div></form>
-                    </div>
-                    <br><br> 
-                         
-                 
-                             
-                            
-                    </div>
-            </div>
-        </div></div></div>
-      <div class="container"> 
-        <div id="myCarousel" class="carousel slide carclass" data-ride="carousel" style="width:70%;margin:auto">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="item active">
-              <img src="jk.jpg"  style="width:100%;height:480px;">
-            </div>
-      
-            <div class="item">
-              <img src="agra.jpg"  style="width:100%;height:480px;">
-            </div>
-          
-            <div class="item">
-              <img src="punjab.jpg" style="width:100%;height:480px;">
-            </div>
-            <div class="item">
-              <img src="munnar.jpg" style="width:100%; height:480px;">
-            </div>
-          </div>
-      
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-          </a>
+          <form class="input-group" id="login">
+            <input
+              type="text"
+              class="input-field"
+              placeholder="User Id"
+              required
+            />
+            <input
+              type="text"
+              class="input-field"
+              placeholder="Password"
+              required
+            />
+            <br /><br />
+            <button type="submit" class="submit-btn">Sign in</button>
+          </form>
+          <form class="input-group" id="register">
+            <input
+              type="text"
+              class="input-field"
+              placeholder="First Name"
+              required
+            />
+            <input
+              type="text"
+              class="input-field"
+              placeholder="Last Name"
+              required
+            />
+            <input
+              type="text"
+              class="input-field"
+              placeholder="Email"
+              required
+            />
+            <input
+              type="text"
+              class="input-field"
+              placeholder="Password"
+              required
+            />
+            <br /><br />
+            <button type="submit" class="submit-btn">Sign up</button>
+          </form>
         </div>
       </div>
-   
+    </div>
+    <div class="container">
+      <div
+        id="myCarousel"
+        class="carousel slide carclass"
+        data-ride="carousel"
+        style="width: 70%; margin: auto"
+      >
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="jk.jpg" style="width: 100%; height: 480px" />
+          </div>
+
+          <div class="item">
+            <img src="agra.jpg" style="width: 100%; height: 480px" />
+          </div>
+
+          <div class="item">
+            <img src="punjab.jpg" style="width: 100%; height: 480px" />
+          </div>
+          <div class="item">
+            <img src="munnar.jpg" style="width: 100%; height: 480px" />
+          </div>
+        </div>
+
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
     <section class="travel-box">
       <div class="container">
         <div class="row">
@@ -221,8 +240,6 @@
                     </a>
                   </li>
                 </ul>
-
-                <!-- Tab panes -->
                 <div class="tab-content">
                   <div
                     role="tabpanel"
@@ -240,40 +257,31 @@
                                 <option value="default">
                                   enter your destination country
                                 </option>
-                                <!-- /.option-->
 
                                 <option value="turkey">turkey</option>
-                                <!-- /.option-->
 
                                 <option value="russia">russia</option>
-                                <!-- /.option-->
-                                <option value="egept">egypt</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
-                            </div>
-                            <!-- /.travel-select-icon -->
 
+                                <option value="egept">egypt</option>
+                              </select>
+                            </div>
                             <div class="travel-select-icon">
                               <select class="form-control">
                                 <option value="default">
                                   enter your destination location
                                 </option>
-                                <!-- /.option-->
 
                                 <option value="istambul">istambul</option>
-                                <!-- /.option-->
 
                                 <option value="mosko">mosko</option>
-                                <!-- /.option-->
+
                                 <option value="cairo">cairo</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-3 col-sm-4">
                           <div class="single-tab-select-box">
@@ -291,7 +299,6 @@
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-3 col-sm-4">
                           <div class="single-tab-select-box">
@@ -309,7 +316,6 @@
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-1 col-sm-4">
                           <div class="single-tab-select-box">
@@ -317,22 +323,18 @@
                             <div class="travel-select-icon">
                               <select class="form-control">
                                 <option value="default">5</option>
-                                <!-- /.option-->
 
                                 <option value="10">10</option>
-                                <!-- /.option-->
 
                                 <option value="15">15</option>
-                                <!-- /.option-->
+
                                 <option value="20">20</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-1 col-sm-4">
                           <div class="single-tab-select-box">
@@ -340,31 +342,26 @@
                             <div class="travel-select-icon">
                               <select class="form-control">
                                 <option value="default">1</option>
-                                <!-- /.option-->
 
                                 <option value="2">2</option>
-                                <!-- /.option-->
 
                                 <option value="4">4</option>
-                                <!-- /.option-->
+
                                 <option value="8">8</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
                       </div>
-                      <!--/.row-->
 
                       <div class="row">
-                          <div class="about-btn travel-mrt-0 pull-right">
-                            <button class="about-view travel-btn">search</button><!--/.travel-btn-->
-                          </div>
+                        <div class="about-btn travel-mrt-0 pull-right">
+                          <button class="about-view travel-btn">search</button
+                          ><!--/.travel-btn-->
+                        </div>
                       </div>
-                      <!--/.row-->
                     </div>
                     <!--/.tab-para-->
                   </div>
@@ -382,16 +379,13 @@
                                 <option value="default">
                                   enter your destination country
                                 </option>
-                                <!-- /.option-->
 
                                 <option value="turkey">turkey</option>
-                                <!-- /.option-->
 
                                 <option value="russia">russia</option>
-                                <!-- /.option-->
+
                                 <option value="egept">egypt</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
 
@@ -400,22 +394,18 @@
                                 <option value="default">
                                   enter your destination location
                                 </option>
-                                <!-- /.option-->
 
                                 <option value="istambul">istambul</option>
-                                <!-- /.option-->
 
                                 <option value="mosko">mosko</option>
-                                <!-- /.option-->
+
                                 <option value="cairo">cairo</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-3 col-sm-4">
                           <div class="single-tab-select-box">
@@ -433,7 +423,6 @@
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-3 col-sm-4">
                           <div class="single-tab-select-box">
@@ -451,7 +440,6 @@
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-1 col-sm-4">
                           <div class="single-tab-select-box">
@@ -459,22 +447,18 @@
                             <div class="travel-select-icon">
                               <select class="form-control">
                                 <option value="default">5</option>
-                                <!-- /.option-->
 
                                 <option value="10">10</option>
-                                <!-- /.option-->
 
                                 <option value="15">15</option>
-                                <!-- /.option-->
+
                                 <option value="20">20</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-1 col-sm-4">
                           <div class="single-tab-select-box">
@@ -482,38 +466,30 @@
                             <div class="travel-select-icon">
                               <select class="form-control">
                                 <option value="default">1</option>
-                                <!-- /.option-->
 
                                 <option value="2">2</option>
-                                <!-- /.option-->
 
                                 <option value="4">4</option>
-                                <!-- /.option-->
+
                                 <option value="8">8</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
                       </div>
-                      <!--/.row-->
 
                       <div class="row">
                         <div class="col-sm-5"></div>
-                        <!--/.col-->
+
                         <div class="clo-sm-7">
                           <div class="about-btn travel-mrt-0 pull-right">
                             <button class="about-view travel-btn">search</button
                             ><!--/.travel-btn-->
                           </div>
-                          <!--/.about-btn-->
                         </div>
-                        <!--/.col-->
                       </div>
-                      <!--/.row-->
                     </div>
                     <!--/.tab-para-->
                   </div>
@@ -552,22 +528,18 @@
                                 <option value="default">
                                   enter your location
                                 </option>
-                                <!-- /.option-->
 
                                 <option value="turkey">turkey</option>
-                                <!-- /.option-->
 
                                 <option value="russia">russia</option>
-                                <!-- /.option-->
+
                                 <option value="egept">egypt</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-3 col-sm-4">
                           <div class="single-tab-select-box">
@@ -585,7 +557,6 @@
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-3 col-sm-4">
                           <div class="single-tab-select-box">
@@ -603,7 +574,6 @@
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-1 col-sm-4">
                           <div class="single-tab-select-box">
@@ -611,22 +581,18 @@
                             <div class="travel-select-icon">
                               <select class="form-control">
                                 <option value="default">5</option>
-                                <!-- /.option-->
 
                                 <option value="10">10</option>
-                                <!-- /.option-->
 
                                 <option value="15">15</option>
-                                <!-- /.option-->
+
                                 <option value="20">20</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
 
                         <div class="col-lg-2 col-md-1 col-sm-4">
                           <div class="single-tab-select-box">
@@ -634,24 +600,19 @@
                             <div class="travel-select-icon">
                               <select class="form-control">
                                 <option value="default">1</option>
-                                <!-- /.option-->
 
                                 <option value="2">2</option>
-                                <!-- /.option-->
 
                                 <option value="4">4</option>
-                                <!-- /.option-->
+
                                 <option value="8">8</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
                       </div>
-                      <!--/.row-->
 
                       <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12">
@@ -663,75 +624,55 @@
                                 <option value="default">
                                   enter your destination location
                                 </option>
-                                <!-- /.option-->
 
                                 <option value="istambul">istambul</option>
-                                <!-- /.option-->
 
                                 <option value="mosko">mosko</option>
-                                <!-- /.option-->
+
                                 <option value="cairo">cairo</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
+
                         <div class="col-lg-3 col-md-3 col-sm-4">
                           <div class="single-tab-select-box">
                             <h2>class</h2>
                             <div class="travel-select-icon">
                               <select class="form-control">
                                 <option value="default">enter class</option>
-                                <!-- /.option-->
 
                                 <option value="A">A</option>
-                                <!-- /.option-->
 
                                 <option value="B">B</option>
-                                <!-- /.option-->
+
                                 <option value="C">C</option>
-                                <!-- /.option--></select
-                              ><!-- /.select-->
+                              </select>
                             </div>
                             <!-- /.travel-select-icon -->
                           </div>
                           <!--/.single-tab-select-box-->
                         </div>
-                        <!--/.col-->
+
                         <div class="clo-sm-5">
                           <div class="about-btn pull-right">
-                            <button class="about-view travel-btn">search</button
-                            ><!--/.travel-btn-->
+                            <button class="about-view travel-btn">
+                              search
+                            </button>
                           </div>
-                          <!--/.about-btn-->
                         </div>
-                        <!--/.col-->
                       </div>
-                      <!--/.row-->
                     </div>
                   </div>
-                  <!--/.tabpannel-->
                 </div>
-                <!--/.tab content-->
               </div>
-              <!--/.desc-tabs-->
             </div>
-            <!--/.single-travel-box-->
           </div>
-          <!--/.col-->
         </div>
-        <!--/.row-->
       </div>
-      <!--/.container-->
     </section>
-    <!--/.travel-box-->
-    <!--travel-box end-->
-
-
-    <!--galley start-->
     <section id="gallery" class="gallery">
       <div class="container">
         <div class="gallery-details">
@@ -741,7 +682,6 @@
               Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
             </p>
           </div>
-          <!--/.gallery-header-->
           <div class="gallery-box">
             <div class="gallery-content">
               <div class="filtr-container">
@@ -756,11 +696,8 @@
                         <a href="#"> china </a>
                         <p><span>20 tours</span><span>15 places</span></p>
                       </div>
-                      <!-- /.item-title -->
                     </div>
-                    <!-- /.filtr-item -->
                   </div>
-                  <!-- /.col -->
 
                   <div class="col-md-6">
                     <div class="filtr-item">
@@ -772,11 +709,8 @@
                         <a href="#"> venuzuala </a>
                         <p><span>12 tours</span><span>9 places</span></p>
                       </div>
-                      <!-- /.item-title-->
                     </div>
-                    <!-- /.filtr-item -->
                   </div>
-                  <!-- /.col -->
 
                   <div class="col-md-4">
                     <div class="filtr-item">
@@ -788,9 +722,7 @@
                         <a href="#"> brazil </a>
                         <p><span>25 tours</span><span>10 places</span></p>
                       </div>
-                      <!-- /.item-title -->
                     </div>
-                    <!-- /.filtr-item -->
                   </div>
                   <!-- /.col -->
 
@@ -804,9 +736,7 @@
                         <a href="#"> australia </a>
                         <p><span>18 tours</span><span>9 places</span></p>
                       </div>
-                      <!-- /.item-title-->
                     </div>
-                    <!-- /.filtr-item -->
                   </div>
                   <!-- /.col -->
 
@@ -820,11 +750,8 @@
                         <a href="#"> netharland </a>
                         <p><span>14 tours</span><span>12 places</span></p>
                       </div>
-                      <!-- /.item-title-->
                     </div>
-                    <!-- /.filtr-item -->
                   </div>
-                  <!-- /.col -->
 
                   <div class="col-md-8">
                     <div class="filtr-item">
@@ -836,28 +763,16 @@
                         <a href="#"> turkey </a>
                         <p><span>14 tours</span><span>6 places</span></p>
                       </div>
-                      <!-- /.item-title-->
                     </div>
-                    <!-- /.filtr-item -->
                   </div>
-                  <!-- /.col -->
                 </div>
-                <!-- /.row -->
               </div>
-              <!-- /.filtr-container-->
             </div>
-            <!-- /.gallery-content -->
           </div>
-          <!--/.galley-box-->
         </div>
-        <!--/.gallery-details-->
       </div>
-      <!--/.container-->
     </section>
-    <!--/.gallery-->
-    <!--gallery end-->
-
-    <!--packages start-->
+    >
     <section id="pack" class="packages">
       <div class="container">
         <div class="gallary-header text-center">
@@ -866,7 +781,6 @@
             Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
           </p>
         </div>
-        <!--/.gallery-header-->
         <div class="packages-content">
           <div class="row">
             <div class="col-md-4 col-sm-6">
@@ -888,7 +802,6 @@
                       <i class="fa fa-angle-right"></i> food facilities
                     </p>
                   </div>
-                  <!--/.packages-para-->
                   <div class="packages-review">
                     <p>
                       <i class="fa fa-star"></i>
@@ -899,17 +812,12 @@
                       <span>2544 review</span>
                     </p>
                   </div>
-                  <!--/.packages-review-->
                   <div class="about-btn">
                     <button class="about-view packages-btn">book now</button>
                   </div>
-                  <!--/.about-btn-->
                 </div>
-                <!--/.single-package-item-txt-->
               </div>
-              <!--/.single-package-item-->
             </div>
-            <!--/.col-->
 
             <div class="col-md-4 col-sm-6">
               <div class="single-package-item">
@@ -945,13 +853,9 @@
                   <div class="about-btn">
                     <button class="about-view packages-btn">book now</button>
                   </div>
-                  <!--/.about-btn-->
                 </div>
-                <!--/.single-package-item-txt-->
               </div>
-              <!--/.single-package-item-->
             </div>
-            <!--/.col-->
 
             <div class="col-md-4 col-sm-6">
               <div class="single-package-item">
@@ -987,13 +891,9 @@
                   <div class="about-btn">
                     <button class="about-view packages-btn">book now</button>
                   </div>
-                  <!--/.about-btn-->
                 </div>
-                <!--/.single-package-item-txt-->
               </div>
-              <!--/.single-package-item-->
             </div>
-            <!--/.col-->
 
             <div class="col-md-4 col-sm-6">
               <div class="single-package-item">
@@ -1029,13 +929,9 @@
                   <div class="about-btn">
                     <button class="about-view packages-btn">book now</button>
                   </div>
-                  <!--/.about-btn-->
                 </div>
-                <!--/.single-package-item-txt-->
               </div>
-              <!--/.single-package-item-->
             </div>
-            <!--/.col-->
 
             <div class="col-md-4 col-sm-6">
               <div class="single-package-item">
@@ -1056,7 +952,6 @@
                       <i class="fa fa-angle-right"></i> food facilities
                     </p>
                   </div>
-                  <!--/.packages-para-->
                   <div class="packages-review">
                     <p>
                       <i class="fa fa-star"></i>
@@ -1067,17 +962,12 @@
                       <span>2544 review</span>
                     </p>
                   </div>
-                  <!--/.packages-review-->
                   <div class="about-btn">
                     <button class="about-view packages-btn">book now</button>
                   </div>
-                  <!--/.about-btn-->
                 </div>
-                <!--/.single-package-item-txt-->
               </div>
-              <!--/.single-package-item-->
             </div>
-            <!--/.col-->
 
             <div class="col-md-4 col-sm-6">
               <div class="single-package-item">
@@ -1109,28 +999,32 @@
                       <span>2544 review</span>
                     </p>
                   </div>
-                  <!--/.packages-review-->
                   <div class="about-btn">
                     <button class="about-view packages-btn">book now</button>
                   </div>
-                  <!--/.about-btn-->
                 </div>
-                <!--/.single-package-item-txt-->
               </div>
-              <!--/.single-package-item-->
             </div>
-            <!--/.col-->
           </div>
-          <!--/.row-->
         </div>
-        <!--/.packages-content-->
       </div>
-      <!--/.container-->
     </section>
-    <!--/.packages-->
-    <!--packages end-->
-    
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   </body>
+  <script>
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+    var z = document.getElementById("btn");
+    function register() {
+      x.style.left = "-400px";
+      y.style.left = "50px";
+      z.style.left = "110px";
+    }
+    function login() {
+      x.style.left = "50px";
+      y.style.left = "450px";
+      z.style.left = "0px";
+    }
+  </script>
 </html>
