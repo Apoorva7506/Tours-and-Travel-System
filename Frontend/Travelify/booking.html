@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Travellify</title>
+    <link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="top-area">
+        <div class="header-area mb-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="logo">
+                            <a href="index.html"> Trave<span>llify</span> </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="main-menu">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                  </button>
+                            </div>
+                            <div class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="smooth-menu">
+                                        <a href="#home" style="color: #00d8ff">home</a>
+                                    </li>
+                                    <li class="smooth-menu">
+                                        <a href="#gallery" style="color: #00d8ff">Destination</a>
+                                    </li>
+                                    <li class="smooth-menu">
+                                        <a href="#pack" style="color: #00d8ff">Packages </a>
+                                    </li>
+                                    <li>
+                                        <button class="book-btn nav-link">book now</button>
+                                    </li>
+                                    <li>
+                                        <button class="book-btn" data-toggle="modal" data-target="#mm">
+                        Login
+                      </button>
+                                    </li>
+                                    <!--/.project-btn-->
+                                </ul>
+                            </div>
+                            <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.main-menu-->
+                    </div>
+                    <!-- /.col-->
+                </div>
+                <!-- /.row -->
+                <div class="home-border"></div>
+                <!-- /.home-border-->
+            </div>
+
+        </div>
+
+    </header>
+    <!-- /.top-area-->
+    <!-- main-menu End -->
+    <div class="modal" id="mm">
+        <div class="modal-dialog">
+            <div class="form-box">
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn" onclick="login()">
+              Sign In
+            </button>
+                    <button type="button" class="toggle-btn" onclick="register()">
+              Sign up
+            </button>
+                </div>
+                <form class="input-group" id="login">
+                    <input type="text" class="input-field" placeholder="User Id" required />
+                    <input type="text" class="input-field" placeholder="Password" required />
+                    <br /><br />
+                    <button type="submit" class="submit-btn">Sign in</button>
+                </form>
+                <form class="input-group" id="register">
+                    <input type="text" class="input-field" placeholder="First Name" required />
+                    <input type="text" class="input-field" placeholder="Last Name" required />
+                    <input type="text" class="input-field" placeholder="Email" required />
+                    <input type="text" class="input-field" placeholder="Password" required />
+                    <br /><br />
+                    <button type="submit" class="submit-btn">Sign up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div><br><br>
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-md-9">
+                    <div class="single-travel-boxes ">
+                        <div style="width:100%;background-color:#00d8ff;padding:10px ">
+                            <h1 style="color:#fff ">Book</h1>
+                        </div>
+
+                        <div class="tab-content ">
+
+                            <div class="tab-para ">
+                                <div class="row ">
+                                    <div class="col-lg-3 col-md-3 col-sm-4">
+                                        <div class="single-tab-select-box">
+                                            <h2>check in</h2>
+                                            <div class="travel-check-icon">
+                                                <form action="#">
+                                                    <input type="date" name="check_in" class="form-control" />
+                                                </form>
+                                            </div>
+                                            <!-- /.travel-check-icon -->
+                                        </div>
+                                        <!--/.single-tab-select-box-->
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3 col-sm-3 ">
+                                        <div class="single-tab-select-box ">
+                                            <h2>Rooms</h2>
+
+                                            <div class="travel-select-icon ">
+                                                <select class="form-control ">
+                                  <option value="default ">
+                                    Rooms
+                                  </option>
+  
+                                  <option value="1 ">1</option>
+  
+                                  <option value="2 ">2</option>
+  
+                                  <option value="3 ">3</option>
+                                  <option value="4 ">4</option>
+                                  <option value="5">5</option>
+                                </select>
+                                            </div>
+
+                                            <!-- /.travel-select-icon -->
+                                        </div>
+                                        <!--/.single-tab-select-box-->
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3 col-sm-3 ">
+                                        <div class="single-tab-select-box ">
+                                            <h2>Passengers</h2>
+
+                                            <div class="travel-select-icon ">
+                                                <select class="form-control ">
+                                  <option value="default ">
+                                    Number of Passengers
+                                  </option>
+  
+                                  <option value="1 ">1</option>
+  
+                                  <option value="2 ">2</option>
+  
+                                  <option value="3 ">3</option>
+                                  <option value="4 ">4</option>
+                                  <option value="5">5</option>
+                                </select>
+                                            </div>
+
+                                            <!-- /.travel-select-icon -->
+                                        </div>
+                                        <!--/.single-tab-select-box-->
+                                    </div>
+
+
+
+                                    <div class="col-lg-3 col-md-3 col-sm-3 ">
+                                        <div class="single-tab-select-box ">
+                                            <h2>Food</h2>
+
+                                            <div class="travel-select-icon ">
+                                                <select class="form-control ">
+                                  <option value="default ">
+                                    Food
+                                  </option>
+  
+                                  <option value="Yes">Yes</option>
+  
+                                  <option value="No ">No</option>
+  
+                           
+                                </select>
+                                            </div>
+
+                                            <!-- /.travel-select-icon -->
+                                        </div>
+                                        <!--/.single-tab-select-box-->
+                                    </div>
+
+
+                                    <div class="col-lg-3 col-md-3 col-sm-3 ">
+                                        <div class="single-tab-select-box ">
+                                            <h2>Payment Mode</h2>
+
+                                            <div class="travel-select-icon ">
+                                                <select class="form-control ">
+                                  <option value="default ">
+                                    Payment Mode
+                                  </option>
+  
+                                  <option value="Card">Card</option>
+  
+                                  <option value="Net banking">Net Banking</option>
+  
+                           
+                                </select>
+                                            </div>
+
+                                            <!-- /.travel-select-icon -->
+                                        </div>
+                                        <!--/.single-tab-select-box-->
+                                    </div>
+
+
+                                    <div class="col-lg-4 col-md-1 col-sm-4 ">
+                                        <div class="single-tab-select-box ">
+                                            <h2>Mode of Transport</h2>
+                                            <div class="travel-select-icon ">
+                                                <select class="form-control ">
+                                  <option value="default ">Any</option>
+  
+                                  <option value="1 ">1</option>
+  
+                                  <option value="2 ">2</option>
+  
+                                  <option value="3 ">3</option>
+                                </select>
+                                            </div>
+                                            <!-- /.travel-select-icon -->
+                                        </div>
+                                        <!--/.single-tab-select-box-->
+                                    </div>
+
+
+                                    <div class="row ">
+                                        <div class="about-btn travel-mrt-0 pull-right ">
+                                            <button class="about-view travel-btn ">Book</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/.tab-para-->
+                            </div>
+                            <!--/.tabpannel-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="single-travel-boxes ">
+                        <img src="assets/images/packages/p2.jpg" alt="package-place" />
+                        <div class="single-package-item-txt" style="margin-top:10px;">
+                            <h3>england <span class="pull-right">$1499</span></h3>
+                            <div class="packages-para">
+                                <p>
+                                    <span>
+                <i class="fa fa-angle-right"></i> 5 daays 6 nights
+              </span>
+                                    <i class="fa fa-angle-right"></i> 5 star accomodation
+                                </p>
+                                <p>
+                                    <span>
+                <i class="fa fa-angle-right"></i> transportation
+              </span>
+                                    <i class="fa fa-angle-right"></i> food facilities
+                                </p>
+                            </div>
+                            <!--/.packages-para--><br><br>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </section>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js "></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js "></script>
+</body>
+<script>
+    var x = document.getElementById("login ");
+    var y = document.getElementById("register ");
+    var z = document.getElementById("btn ");
+
+    function register() {
+        x.style.left = "-400px ";
+        y.style.left = "50px ";
+        z.style.left = "110px ";
+    }
+
+    function login() {
+        x.style.left = "50px ";
+        y.style.left = "450px ";
+        z.style.left = "0px ";
+    }
+</script>
+
+</html>

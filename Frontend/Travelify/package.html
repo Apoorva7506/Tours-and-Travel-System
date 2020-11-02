@@ -1,110 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Package</title>
-    <link
-    href="https://fonts.googleapis.com/css?family=Rufina:400,700"
-    rel="stylesheet"
-  />
+    <link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet" />
 
-  <link
-    href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-    crossorigin="anonymous"
-  />
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-    integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
-    crossorigin="anonymous"
-  />
-  <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="package.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="package.css" />
 </head>
+
 <body>
-    <div class="container">
+    <div class="col-12">
         <h2 style="color: aqua;text-align:center">Destination</h2>
-        <div
-          id="myCarousel"
-          class="carousel slide carclass packcar"
-          data-ride="carousel"
-        >
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="item active">
-              <img src="jk.jpg" style="width: 100%; height: 480px" />
+        <div id="myCarousel" class="carousel slide carclass packcar" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="jk.jpg" style="width: 100%; height: 480px" />
+                </div>
+
+                <div class="item">
+                    <img src="agra.jpg" style="width: 100%; height: 480px" />
+                </div>
+
+                <div class="item">
+                    <img src="punjab.jpg" style="width: 100%; height: 480px" />
+                </div>
+                <div class="item">
+                    <img src="munnar.jpg" style="width: 100%; height: 480px" />
+                </div>
             </div>
-  
-            <div class="item">
-              <img src="agra.jpg" style="width: 100%; height: 480px" />
-            </div>
-  
-            <div class="item">
-              <img src="punjab.jpg" style="width: 100%; height: 480px" />
-            </div>
-            <div class="item">
-              <img src="munnar.jpg" style="width: 100%; height: 480px" />
-            </div>
-          </div>
-  
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-          </a>
+
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-      </div>
-      <div class="wrap">
-        <ul class="tabs group">
-          <li><a class="active" href="#/one">Information</a></li>
-          <li><a href="#/hotel">Hotel</a></li>
-          <li><a href="#/mot">Mode of transport</a></li>
-          <li><a href="#/number">Number of Days</a></li></li>
-          <li><a href="#/spots">Popular Spots</a></li>
+    </div>
+    <div class="wrap ">
+        <ul class="tabs group" style="width:75%">
+            <li style="width:20%"><a class="active" href="#/one">Information</a></li>
+            <li style="width:20%"><a href="#/hotel">Hotel</a></li>
+            <li style="width:20%"><a href="#/mot">Mode of transport</a></li>
+            <li style="width:20%"><a href="#/number">Number of Days</a></li>
+
+            <li style="width:20%"><a href="#/spots">Popular Spots</a></li>
         </ul>
-        <div id="terms">
-          <p id="one">the skills, knowledge, and experiences possessed by an individual</p>
-          <p id="hotel">versatile skills that are applied to personal and professional roles</p>
-          <p id="mot">mot</p>
-          <p id="number">nod</p>
-          <p id="spots"> pop spots </p>
-        </div>     
-      </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <div id="terms" style="width:75%">
+            <p id="one">the skills, knowledge, and experiences possessed by an individual</p>
+            <p id="hotel">versatile skills that are applied to personal and professional roles</p>
+            <p id="mot">mot</p>
+            <p id="number">nod</p>
+            <p id="spots"> pop spots </p>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 <script>
-(function($) {
+    (function($) {
 
-	var tabs =  $(".tabs li a");
-  
-	tabs.click(function() {
-		var terms = this.hash.replace('/','');
-		tabs.removeClass("active");
-		$(this).addClass("active");
-    $("#terms").find('p').hide();
-    $(terms).fadeIn(200);
-	});
+        var tabs = $(".tabs li a");
 
-})(jQuery);
+        tabs.click(function() {
+            var terms = this.hash.replace('/', '');
+            tabs.removeClass("active");
+            $(this).addClass("active");
+            $("#terms").find('p').hide();
+            $(terms).fadeIn(200);
+        });
+
+    })(jQuery);
 </script>
+
 </html>
