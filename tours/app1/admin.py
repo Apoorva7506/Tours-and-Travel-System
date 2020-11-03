@@ -9,6 +9,14 @@ from django.urls import path, include
 from django.http import HttpResponse, HttpResponseRedirect
 from datetime import datetime
 
+from django import forms
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.forms import ReadOnlyPasswordHashField
+
+from .models import User
+
+
 class AddUserForm(forms.ModelForm):
     """
     New User Form. Requires password confirmation.
@@ -22,9 +30,7 @@ class AddUserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = (
-            'email', 'username', 'fname','mname','lname', 'phone' , 'age', 'houseno','city','state' 'password'
-        )
+        fields = ('email', 'first_name', 'last_name', 'city', 'age')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -52,7 +58,8 @@ class UpdateUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = (
-            'email', 'password','username', 'fname','mname','lname', 'phone' , 'age', 'houseno','city','state'
+            'email', 'password', 'first_name', 'last_name', 'city', 'age', 'is_active',
+            'is_staff'
         )
 
     def clean_password(self):
@@ -64,13 +71,13 @@ class UserAdmin(BaseUserAdmin):
     form = UpdateUserForm
     add_form = AddUserForm
 
-    list_display = ('email',  'phone',
-                    'is_staff', 'username', 'fname','mname','lname', 'phone' , 'age', 'houseno','city','state')
-
+    list_display = ('email', 'first_name', 'last_name',
+                    'city', 'age', 'is_staff')
+    list_filter = ('is_staff', )
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ['name', 'username', 'phone', 'username', 'fname','mname','lname', 'phone' , 'age', 'houseno','city','state']}),
-
+        ('Personal info', {'fields': ('first_name', 'last_name')}),
+        ('Permissions', {'fields': ('is_active', 'is_staff')}),
     )
     add_fieldsets = (
         (
@@ -78,21 +85,27 @@ class UserAdmin(BaseUserAdmin):
             {
                 'classes': ('wide',),
                 'fields': (
-                    'email',  'phone', 'username', 'password1',
-                    'password2', 'fname','mname','lname', 'phone' , 'age', 'houseno','city','state'
+                    'email', 'first_name', 'last_name', 'city', 'age', 'password1',
+                    'password2'
                 )
             }
         ),
     )
-    search_fields = ('email', 'fname')
-    ordering = ('email', 'username', 'fname')
+    search_fields = ('email', 'first_name', 'last_name', 'city', 'age')
+    ordering = ('email', 'first_name', 'last_name', 'city', 'age')
     filter_horizontal = ()
 
 
+admin.site.register(User, UserAdmin)
 # Register your models here.
-admin.site.register(Customer)
-admin.site.register(CustomerNumber)
+
 admin.site.register(Destination)
 admin.site.register(PopularSpots)
 admin.site.register(Hotel)
 admin.site.register(Luxury)
+admin.site.register(Mot)
+admin.site.register(Roadways)
+admin.site.register(Railways)
+admin.site.register(Airways)
+admin.site.register(Package)
+admin.site.register(Booking)

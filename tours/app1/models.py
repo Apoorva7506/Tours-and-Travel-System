@@ -1,42 +1,37 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from datetime import datetime
-# Create your models here.
+from django.contrib.auth.models import (
+    AbstractBaseUser, BaseUserManager, PermissionsMixin
+)
+from django.db import models
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+from django.conf import settings
+
+
 class UserManager(BaseUserManager):
     def create_user(
-            self, email,username,fname,mname,lname, phone,age, houseno,city,state, password=None, commit=True):
+            self, email, first_name, last_name, phone, city, age, password=None,
+            commit=True):
+        """
+        Creates and saves a User with the given email, first name, last name
+        and password.
+        """
         if not email:
-            raise ValueError(('Users must have an email address'))
-        if not username:
-            raise ValueError(('Users must have a username'))
-        if not fname:
-            raise ValueError(('Users must have a first name'))
-        if not mname:
-            raise ValueError(('Users must have a middle name'))
-        if not nname:
-            raise ValueError(('Users must have a last name'))
+            raise ValueError(_('Users must have an email address'))
+        if not first_name:
+            raise ValueError(_('Users must have a first name'))
+        if not last_name:
+            raise ValueError(_('Users must have a last name'))
         if not phone:
-            raise ValueError(('Users must have a phone number'))
-        if not age:
-            raise ValueError(('Users must have an age'))
-        if not houseno:
-            raise ValueError(('Users must have a houseno'))
-        if not city:
-            raise ValueError(('Users must have a city'))    
-        if not state:
-            raise ValueError(('Users must have a state'))
+            raise ValueError(_('Users must have a Phone Number'))
 
         user = self.model(
             email=self.normalize_email(email),
-            fname=fname,
-            mname=mname,
-            lname=lname,
-            username=username,
-            age=age,
-            houseno=houseno,
-            city=city,
-            state=state,
+            first_name=first_name,
+            last_name=last_name,
             phone=phone,
+            city=city,
+            age=age,
         )
 
         user.set_password(password)
@@ -44,19 +39,20 @@ class UserManager(BaseUserManager):
             user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, username, fname,mname,lname, phone, password , age, houseno,city,state):
+    def create_superuser(self, email, first_name, last_name, phone, city, age, password):
+        """
+        Creates and saves a superuser with the given email, first name,
+        last name and password.
+        """
         user = self.create_user(
             email,
             password=password,
-            fname=fname,
-            mname=mname,
-            lname=lname,
-            username=username,
-            age=age,
-            houseno=houseno,
-            city=city,
-            state=state,
+            first_name=first_name,
+            last_name=last_name,
             phone=phone,
+            city=city,
+            age=age,
+
             commit=False,
         )
         user.is_staff = True
@@ -66,134 +62,129 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(verbose_name=('email address'), max_length=255, unique=True)
-    username = models.CharField(('username'), max_length=100, blank=True, unique=True)
-    phone = models.CharField(max_length=10)
-    fname=models.CharField(('fname'),max_length=255)
-    mname=models.CharField(('mname'),max_length=255)
-    lname=models.CharField(('lname'),max_length=255)
-    age=models.IntegerField()
-    houseno=models.CharField(('houseno'),max_length=255)
-    city=models.CharField(('city'),max_length=255)
-    state=models.CharField(('state'),max_length=255)
+    email = models.EmailField(
+        verbose_name=_('email address'), max_length=255, unique=True
+    )
+    # password field supplied by AbstractBaseUser
+    # last_login field supplied by AbstractBaseUser
+    first_name = models.CharField(_('first name'), max_length=30, blank=True)
+    last_name = models.CharField(_('last name'), max_length=150, blank=True)
+    phone = models.CharField(max_length=12, blank=True)
+    age = models.IntegerField(null=True, blank=True)
+    city = models.CharField(max_length=100, null=True, blank=True)
+
     is_active = models.BooleanField(
-        ('active'),
+        _('active'),
         default=True,
-        help_text=(
+        help_text=_(
             'Designates whether this user should be treated as active. '
             'Unselect this instead of deleting accounts.'
         ),
     )
-
     is_staff = models.BooleanField(
-        ('staff status'),
+        _('staff status'),
         default=False,
-        help_text=(
+        help_text=_(
             'Designates whether the user can log into this admin site.'
         ),
     )
-
     # is_superuser field provided by PermissionsMixin
     # groups field provided by PermissionsMixin
     # user_permissions field provided by PermissionsMixin
 
     date_joined = models.DateTimeField(
-        ('date joined'), default=datetime.now
+        _('date joined'), default=timezone.now
     )
 
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'fname','mname','lname', 'phone' , 'age', 'houseno','city','state']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', 'city', 'age']
+
+    def get_full_name(self):
+        """
+        Return the first_name plus the last_name, with a space in between.
+        """
+        full_name = '%s %s' % (self.first_name, self.last_name)
+        return full_name.strip()
 
     def __str__(self):
-        return(self.username)
-
-class Customer(models.Model):
-    
-    fname=models.CharField(max_length=255)
-    mname=models.CharField(max_length=255)
-    lname=models.CharField(max_length=255)
-    email=models.CharField(max_length=255)
-    age=models.IntegerField()
-    houseno=models.CharField(max_length=255)
-    city=models.CharField(max_length=255)
-    state=models.CharField(max_length=255)
-    def __str__(self):
-        return self.fname
-    def customer_number(self):
-        return self.customernumber_set_values_list('cnumber',flat=True)
-
-
-class CustomerNumber(models.Model):
-    customer=models.ForeignKey(Customer,on_delete=models.CASCADE)
-    cnumber=models.IntegerField()
+        return '{} <{}>'.format(self.get_full_name(), self.email)
 
 
 class Destination(models.Model):
-    dname=models.CharField(max_length=255)
-    dstate=models.CharField(max_length=255)
+    dname = models.CharField(max_length=255)
+    dstate = models.CharField(max_length=255)
+
     def __str__(self):
         return self.dname
+
     def popular_spots(self):
-        return self.popularspots_set_values_list('pname',flat=True)
+        return self.popularspots_set_values_list('pname', flat=True)
 
 
 class PopularSpots(models.Model):
-    did=models.ForeignKey(Destination,on_delete=models.CASCADE)
-    pname=models.CharField(max_length=255)
+    did = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    pname = models.CharField(max_length=255)
 
 
 class Hotel(models.Model):
-    tier=models.IntegerField()
-    hname=models.CharField(max_length=255)
-    street=models.CharField(max_length=255)
-    locality=models.CharField(max_length=255)
-    d_id=models.ForeignKey(Destination,on_delete=models.CASCADE)
+    tier = models.IntegerField()
+    hname = models.CharField(max_length=255)
+    street = models.CharField(max_length=255)
+    locality = models.CharField(max_length=255)
+    d_id = models.ForeignKey(Destination, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.hname
+
     def luxuries(self):
-        return self.luxury_set_values_list('name',flat=True)
+        return self.luxury_set_values_list('name', flat=True)
 
 
 class Luxury(models.Model):
-    hotel= models.ForeignKey(Destination,on_delete=models.CASCADE)
-    name= models.CharField(max_length=255)
+    hotel = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
 
 
 class Mot(models.Model):
-    fare=models.FloatField()
-    t_type=models.CharField(max_length=20)
+    fare = models.FloatField()
+    t_type = models.CharField(max_length=20)
+
 
 class Roadways(models.Model):
-    mot=models.ForeignKey(Mot,on_delete=models.CASCADE)
-    carname=models.CharField(max_length=30)
-    cartype=models.CharField(max_length=20)
+    mot = models.ForeignKey(Mot, on_delete=models.CASCADE)
+    carname = models.CharField(max_length=30)
+    cartype = models.CharField(max_length=20)
+
 
 class Railways(models.Model):
-    mot=models.ForeignKey(Mot,on_delete=models.CASCADE)
-    AC_NAC=models.CharField(max_length=20)
-    C_class=models.CharField(max_length=20)
+    mot = models.ForeignKey(Mot, on_delete=models.CASCADE)
+    ac_nac = models.CharField(max_length=20)
+    c_class = models.CharField(max_length=20)
 
 
 class Airways(models.Model):
-    mot=models.ForeignKey(Mot,on_delete=models.CASCADE)
-    foodAC=models.CharField(max_length=20)
-    A_class=models.CharField(max_length=20)
+    mot = models.ForeignKey(Mot, on_delete=models.CASCADE)
+    foodAC = models.CharField(max_length=20)
+    A_class = models.CharField(max_length=20)
 
 
 class Package(models.Model):
-    days=models.IntegerField()
-    hotel=models.ForeignKey(Hotel,on_delete=models.CASCADE)
-    mot=models.ForeignKey(Mot,on_delete=models.CASCADE)
-    destination=models.ForeignKey(Destination,on_delete=models.CASCADE)
-    cost=models.FloatField()
+    days = models.IntegerField()
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
+    mot = models.ForeignKey(Mot, on_delete=models.CASCADE)
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    cost = models.FloatField()
+
 
 class Booking(models.Model):
-    n_people=models.IntegerField()
-    trip_date=models.DateField()
-    total=models.FloatField()
-    rooms=models.IntegerField()
-    payment_mode=models.CharField(max_length=50)
-    package=models.ForeignKey(Package,on_delete=models.CASCADE)
-    customer=models.ForeignKey(Customer,on_delete=models.CASCADE)
+    n_people = models.IntegerField()
+    trip_date = models.DateField()
+    total = models.FloatField()
+    rooms = models.IntegerField()
+    payment_mode = models.CharField(max_length=50)
+    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    customer = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+    )
