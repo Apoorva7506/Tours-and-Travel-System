@@ -1,0 +1,95 @@
+.packcar {
+  width: 70%;
+  margin: auto;
+  transform: translateY(10px);
+}
+.wrap {
+  margin-top: -10px;
+  transform: translateY(50px);
+}
+ul.tabs {
+  width: 1000px;
+  height: 80px;
+  margin: 0 auto;
+  list-style: none;
+  overflow: hidden;
+  padding: 0;
+}
+ul.tabs li {
+  float: left;
+  width: 200px;
+}
+ul.tabs li a {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  height: 40px;
+  margin-top: 40px;
+  padding: 10px 0 0 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #00d8ff;
+  background: #000000;;
+  border: 0px solid #00d8ff;
+  transition: padding 0.2s ease, margin 0.2s ease;
+}
+.tabs li:first-child a {
+  z-index: 5;
+  border-top-left-radius: 8px;
+}
+.tabs li:nth-child(2) a {
+  z-index: 4;
+}
+.tabs li:nth-child(3) a {
+    z-index: 3;
+}
+.tabs li:nth-child(4) a {
+    z-index: 2;
+}
+.tabs li:last-child a {
+  z-index: 1;
+  border-top-right-radius: 8px;
+}
+ul.tabs li a:hover {
+  margin: 35px 0 0 0;
+  padding: 10px 0 5px 0;
+}
+ul.tabs li a.active {
+  margin: 30px 0 0 0;
+  padding: 10px 0 10px 0;
+  background: #aaabac;
+  color: #2f3536;
+  z-index: 4;
+  outline: none;
+}
+.group:before,
+.group:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+.group:after {
+  clear: both;
+}
+#terms {
+  width: 1000px;
+  height: 200px;
+  margin: 0 auto;
+  background: #aaabac;
+  transform: translateY(-10px);
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+#terms p {
+  font-family: "Open Sans", sans-serif;
+  padding: 30px 40px;
+  color: black;
+  line-height: 26px;
+  font-size: 18px;
+  margin: 0;
+}
+
+#hotel,#mot,#number,#spots {
+  display: none;
+}
