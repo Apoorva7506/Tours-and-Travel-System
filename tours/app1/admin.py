@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import *
-from import_export.admin import ImportExportModelAdmin
 from django.conf.urls import url
 from django import forms
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
@@ -8,12 +7,10 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.urls import path, include
 from django.http import HttpResponse, HttpResponseRedirect
 from datetime import datetime
-
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-
 from .models import User
 
 
