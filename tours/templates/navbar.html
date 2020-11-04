@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %} {% if user.is_authenticated%}
+
+
 
 <header class="top-area">
     <div class="header-area">
@@ -27,9 +29,92 @@
                                 <li class="smooth-menu">
                                     <a href="#pack" style="color: #00d8ff">Packages </a>
                                 </li>
+
                                 <li>
-                                    <button class="book-btn nav-link">book now</button>
+                                    <button class="book-btn" data-toggle="modal" data-target="#mm">
+                    Edit Profile
+                  </button>
                                 </li>
+                                <li>
+                                    <form method="POST" action="{% url 'logout' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="book-btn nav-link">Logout</button>
+                                    </form>
+                                </li>
+                                <!--/.project-btn-->
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.main-menu-->
+                </div>
+                <!-- /.col-->
+            </div>
+            <!-- /.row -->
+            <div class="home-border"></div>
+            <!-- /.home-border-->
+        </div>
+        <!-- /.container-->
+    </div>
+    <!-- /.header-area -->
+</header>
+<!-- /.top-area-->
+<!-- main-menu End -->
+<div class="modal" id="mm">
+    <div class="modal-dialog">
+        <div class="form-box" style="height:550px;">
+
+            <button type="submit" class="submit-btn">Edit Details</button>
+
+
+
+            <form action={% url 'edit' %} class="input-group" id="login" method="POST">
+                {% csrf_token %}
+                <input type="text" class="input-field" name="fname" placeholder="First Name" required />
+                <input type="text" class="input-field" name="lname" placeholder="Last Name" required />
+                <input type="text" class="input-field" name="email" placeholder="Email" required />
+                <input type="text" class="input-field" name="phone" placeholder="Phone" required />
+                <input type="text" class="input-field" name="city" placeholder="city" required />
+
+                <br /><br />
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% else %}
+<header class="top-area">
+    <div class="header-area">
+        <div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="logo">
+                        <a href="index.html" style="margin-left:20px"> Trave<span>llify</span> </a>
+                    </div>
+                </div>
+                <div class="col-sm-10">
+                    <div class="main-menu">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <i class="fa fa-bars"></i>
+              </button>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="smooth-menu">
+                                    <a href="#home" style="color: #00d8ff">home</a>
+                                </li>
+                                <li class="smooth-menu">
+                                    <a href="#gallery" style="color: #00d8ff">Destination</a>
+                                </li>
+                                <li class="smooth-menu">
+                                    <a href="#pack" style="color: #00d8ff">Packages </a>
+                                </li>
+
                                 <li>
                                     <button class="book-btn" data-toggle="modal" data-target="#mm">
                     Login
@@ -56,7 +141,7 @@
 <!-- main-menu End -->
 <div class="modal" id="mm">
     <div class="modal-dialog">
-        <div class="form-box" style="height:500px;">
+        <div class="form-box" style="height:550px;">
             <div class="button-box">
                 <div id="btn"></div>
                 <button type="button" class="toggle-btn" onclick="login()">
@@ -79,6 +164,7 @@
                 <input type="text" class="input-field" name="lname" placeholder="Last Name" required />
                 <input type="text" class="input-field" name="email" placeholder="Email" required />
                 <input type="text" class="input-field" name="phone" placeholder="Phone" required />
+                <input type="text" class="input-field" name="city" placeholder="city" required />
                 <input type="text" class="input-field" name="password" placeholder="Password" required />
                 <br /><br />
                 <button type="submit" class="submit-btn">Sign up</button>
@@ -86,4 +172,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
+{% endif %} {% endblock %}

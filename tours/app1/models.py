@@ -10,7 +10,7 @@ from django.conf import settings
 
 class UserManager(BaseUserManager):
     def create_user(
-            self, email, first_name, last_name, phone, city, age, password=None,
+            self, email, first_name, last_name, phone, city,  password=None,
             commit=True):
         """
         Creates and saves a User with the given email, first name, last name
@@ -31,7 +31,7 @@ class UserManager(BaseUserManager):
             last_name=last_name,
             phone=phone,
             city=city,
-            age=age,
+
         )
 
         user.set_password(password)
@@ -39,7 +39,7 @@ class UserManager(BaseUserManager):
             user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, first_name, last_name, phone, city, age, password):
+    def create_superuser(self, email, first_name, last_name, phone, city,  password):
         """
         Creates and saves a superuser with the given email, first name,
         last name and password.
@@ -51,7 +51,7 @@ class UserManager(BaseUserManager):
             last_name=last_name,
             phone=phone,
             city=city,
-            age=age,
+
 
             commit=False,
         )
@@ -70,7 +70,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
     phone = models.CharField(max_length=12, blank=True)
-    age = models.IntegerField(null=True, blank=True)
+
     city = models.CharField(max_length=100, null=True, blank=True)
 
     is_active = models.BooleanField(
@@ -99,7 +99,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', 'city', 'age']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', 'city']
 
     def get_full_name(self):
         """

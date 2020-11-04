@@ -27,7 +27,7 @@ class AddUserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'city', 'age')
+        fields = ('email', 'first_name', 'last_name', 'city')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -55,7 +55,7 @@ class UpdateUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = (
-            'email', 'password', 'first_name', 'last_name', 'city', 'age', 'is_active',
+            'email', 'password', 'first_name', 'last_name', 'city', 'is_active',
             'is_staff'
         )
 
@@ -69,7 +69,7 @@ class UserAdmin(BaseUserAdmin):
     add_form = AddUserForm
 
     list_display = ('email', 'first_name', 'last_name',
-                    'city', 'age', 'is_staff')
+                    'city',  'is_staff')
     list_filter = ('is_staff', )
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
@@ -82,14 +82,14 @@ class UserAdmin(BaseUserAdmin):
             {
                 'classes': ('wide',),
                 'fields': (
-                    'email', 'first_name', 'last_name', 'city', 'age', 'password1',
+                    'email', 'first_name', 'last_name', 'city',  'password1',
                     'password2'
                 )
             }
         ),
     )
-    search_fields = ('email', 'first_name', 'last_name', 'city', 'age')
-    ordering = ('email', 'first_name', 'last_name', 'city', 'age')
+    search_fields = ('email', 'first_name', 'last_name', 'city', )
+    ordering = ('email', 'first_name', 'last_name', 'city', )
     filter_horizontal = ()
 
 
