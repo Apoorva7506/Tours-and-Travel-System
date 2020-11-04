@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from .models import *
 from django.contrib import auth
-
+from django.contrib import messages
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'package.html')
 
 
 def register(request):
@@ -18,17 +18,16 @@ def register(request):
         city = request.POST['city']
 
         if User.objects.filter(email=email).exists():
-            return HttpResponse("<center><h1>Email already exists<br>" + '<a href="/">Click to go back to Index</a></center></h1>')
-
+            messages.info(request,"Email already exists")
+            return redirect('index')
+ 
         else:
 
             user = User.objects.create_user(first_name=first_name, last_name=last_name,
                                             email=email, phone=phone, city=city, password=password)
             user.save()
-            html = "<h1><center>You are now registered<br>" + \
-                '<a href="/">Click to go back to Index</a></center></h1>'
-            return HttpResponse(html)
-
+            messages.info(request,"You are now registered")
+            return redirect('index')
 
 def login(request):
     if request.method == 'POST':
@@ -39,9 +38,11 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return HttpResponse("Logged In")
+            messages.info(request,"Logged in successfully")
+            return redirect('index')
         else:
-            return HttpResponse("<center><h1>Invalid Credentials Try Again<br>" + '<a href="/">Click to go back to Index</a></center></h1>')
+            messages.info(request,"Invalid Credentials,Try Again")
+            return redirect('index')
 
 
 def edit(request):
@@ -50,18 +51,25 @@ def edit(request):
         last_name = request.POST['lname']
         email = request.POST['email']
         phone = request.POST['phone']
-
         user = User.objects.get(email=email)
         user.first_name = first_name
         user.last_name = last_name
         user.email = email
-
         user.phone = phone
         user.save()
-        html = "Details Changed"
-        return HttpResponse(html)
-
+        messages.info(request,"Details Changed")
+        return redirect('index')
 
 def logout(request):
     auth.logout(request)
     return render(request, 'index.html')
+ 
+def book(request):
+    if request.method == 'POST':
+        if request.POST['check_in'] == '' or request.POST["pass"] == " No. of Passengers " or request.POST["rooms"] == " Rooms " or request.POST["food"] == " Food " or request.POST["pay"]==" Payment Mode ":
+            messages.info(request,"Please provide valid details")
+            return redirect('index')
+        else:
+            messages.info(request,"Booking Successful")
+            return redirect('index')
+
