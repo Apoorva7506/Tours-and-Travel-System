@@ -24,10 +24,7 @@
                                     <a href="#home" style="color: #00d8ff">home</a>
                                 </li>
                                 <li class="smooth-menu">
-                                    <a href="#gallery" style="color: #00d8ff">Destination</a>
-                                </li>
-                                <li class="smooth-menu">
-                                    <a href="#pack" style="color: #00d8ff">Packages </a>
+                                    <a href="{% url 'browse'%}" style="color: #00d8ff"> Browse </a>
                                 </li>
 
                                 <li>
@@ -70,11 +67,11 @@
 
             <form action={% url 'edit' %} class="input-group" id="login" method="POST">
                 {% csrf_token %}
-                <input type="text" class="input-field" name="fname" placeholder="First Name" required />
-                <input type="text" class="input-field" name="lname" placeholder="Last Name" required />
-                <input type="text" class="input-field" name="email" placeholder="Email" required />
-                <input type="text" class="input-field" name="phone" placeholder="Phone" required />
-                <input type="text" class="input-field" name="city" placeholder="city" required />
+                <input type="text" class="input-field" name="fname" placeholder="First Name" value="{{u.first_name}}" required />
+                <input type="text" class="input-field" name="lname" placeholder="Last Name" value="{{u.last_name}}" required />
+                <input type="text" class="input-field" name="email" placeholder="Email" value="{{u.email}}" required />
+                <input type="text" class="input-field" name="phone" placeholder="Phone" value="{{u.phone}}" required />
+                <input type="text" class="input-field" name="city" placeholder="city" value="{{u.city}}" required />
 
                 <br /><br />
                 <button type="submit" class="submit-btn">Submit</button>
@@ -112,7 +109,7 @@
                                     <a href="#gallery" style="color: #00d8ff">Destination</a>
                                 </li>
                                 <li class="smooth-menu">
-                                    <a href="#pack" style="color: #00d8ff">Packages </a>
+                                    <a href="#pack" style="color: #00d8ff"> Packages </a>
                                 </li>
 
                                 <li>
@@ -173,35 +170,28 @@
     </div>
 </div>
 
-{% endif %} 
-{% if messages %}
-<div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true" 
-style="
+{% endif %} {% if messages %}
+<div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true" style="
 width:20%;
 background-color:#00d8ff;
+z-index:2;
 padding:10px;
 margin:0px;
 position:absolute;
 left:1079px;
 top:77px">
     <div class="toast-header">
-      <strong class="mr-auto">Travellify </strong>
-      <small class="text-muted" 
-      style="position:absolute;
+        <strong class="mr-auto">Travellify </strong>
+        <small class="text-muted" style="position:absolute;
       left:190px;">just now</small>
-      <button type="button" class="ml-2 mb-1 close" 
-      data-dismiss="toast" aria-label="Close" 
-      onclick="hide()"
-      >
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" onclick="hide()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="toast-body">
-    {% for message in messages %}
+        {% for message in messages %}
         <p>{{message}}</p>
-    {% endfor %}
+        {% endfor %}
     </div>
-  </div>
-{% endif %}
-
-{% endblock %}
+</div>
+{% endif %} {% endblock %}

@@ -115,6 +115,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Destination(models.Model):
     dname = models.CharField(max_length=255)
     dstate = models.CharField(max_length=255)
+    info = models.TextField()
 
     def __str__(self):
         return self.dname
@@ -124,16 +125,20 @@ class Destination(models.Model):
 
 
 class PopularSpots(models.Model):
-    did = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    d_id = models.ForeignKey(Destination, on_delete=models.CASCADE)
     pname = models.CharField(max_length=255)
+    popic = models.ImageField(
+        upload_to='pop/%Y/%m/%d/', blank=True, default='media/h.jpg')
 
 
 class Hotel(models.Model):
+    info = models.TextField(blank=True, null=True)
     tier = models.IntegerField()
     hname = models.CharField(max_length=255)
     street = models.CharField(max_length=255)
-    locality = models.CharField(max_length=255)
     d_id = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    hpic = models.ImageField(
+        upload_to='hotel/%Y/%m/%d/', blank=True, default='media/h.jpg')
 
     def __str__(self):
         return self.hname
@@ -171,14 +176,18 @@ class Airways(models.Model):
 
 
 class Package(models.Model):
+    name = models.CharField(max_length=100)
     days = models.IntegerField()
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
     mot = models.ForeignKey(Mot, on_delete=models.CASCADE)
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
     cost = models.FloatField()
+    ppic = models.ImageField(
+        upload_to='package/%Y/%m/%d/', blank=True, default='media/h.jpg')
 
 
 class Booking(models.Model):
+
     n_people = models.IntegerField()
     trip_date = models.DateField()
     total = models.FloatField()
