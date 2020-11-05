@@ -46,7 +46,6 @@ def register(request):
             messages.info(request, "You are now registered")
             return redirect('index')
 
-
 def login(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -103,3 +102,7 @@ def browse(request):
         'p': p
     }
     return render(request, 'browse.html', context)
+
+def showpackage(request,p_id):
+    p=Package.objects.get(pk=p_id)
+    return render(request,'package.html',{'p':p})

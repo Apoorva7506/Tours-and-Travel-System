@@ -10,6 +10,7 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('edit', views.edit, name='edit'),
     path('book', views.book, name='book'),
-    path('browse', views.browse, name='browse')
+    path('browse', views.browse, name='browse'),
+    path('showpackage',views.showpackage,name='showpackage')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
