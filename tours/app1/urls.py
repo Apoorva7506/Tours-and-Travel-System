@@ -11,6 +11,5 @@ urlpatterns = [
     path('edit', views.edit, name='edit'),
     path('book', views.book, name='book'),
     path('browse', views.browse, name='browse'),
-    path('showpackage',views.showpackage,name='showpackage')
-
+    path('package/<int:p_id>',views.package,name='package')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
