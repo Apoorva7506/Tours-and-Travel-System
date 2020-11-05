@@ -184,6 +184,7 @@ class Package(models.Model):
     cost = models.FloatField()
     ppic = models.ImageField(
         upload_to='package/%Y/%m/%d/', blank=True, default='media/h.jpg')
+    review = models.IntegerField()
 
 
 class Booking(models.Model):

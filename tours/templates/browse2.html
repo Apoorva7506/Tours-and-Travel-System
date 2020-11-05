@@ -24,7 +24,7 @@
                                     enter your destination city
                                   </option>
                                   {% for k in d %}
-                                  <option value="{{k.dname}}">{{k.dname}}</option>{% endfor %}
+                                  <option value="{{k.dname}}"{% if v.state == k.dname %} selected{% endif %}>{{k.dname}}</option>{% endfor %}
   
                                                                 </select>
                                             </div>
@@ -42,7 +42,7 @@
                                     enter your destination State
                                   </option>
                                   {% for k in s %}
-                                  <option value="{{k}}">{{k}}</option>{% endfor %}
+                                  <option value="{{k}}"{% if v.state == k %} selected{% endif %}>{{k}}</option>{% endfor %}
   
                                  
                                 </select>
@@ -56,8 +56,8 @@
                                             <h2>Max Cost</h2>
                                             <div class="travel-select-icon">
                                                 <select name="cost" class="form-control">
-                                                    {% for k,v in c.items %}
-                                  <option value="{{k}}">{{v}}</option>
+                                                    {% for g,y in c.items %}
+                                  <option value="{{g}}"{% if v.cost == g %} selected {% endif %}>{{y}}</option>
   
                                  {% endfor %}
                                 </select>
@@ -72,8 +72,8 @@
                                             <h2>duration</h2>
                                             <div class="travel-select-icon">
                                                 <select name="days" class="form-control">
-                                                    {% for k,v in days.items %}
-                                                    <option value="{{k}}">{{v}}</option>
+                                                    {% for g,y in days.items %}
+                                                    <option value="{{g}}"{% if v.days == g %} selected {% endif %}>{{y}}</option>
                     
                                                    {% endfor %}
                                 </select>
@@ -87,8 +87,8 @@
                                             <h2>Hotel Tier</h2>
                                             <div class="travel-select-icon">
                                                 <select name="tier" class="form-control">
-                                                    {% for k,v in t.items %}
-                                                    <option value="{{k}}">{{v}}</option>
+                                                    {% for g,y in t.items %}
+                                                    <option value="{{g}}"{% if v.tier == g %} selected {% endif %}>{{y}}</option>
                     
                                                    {% endfor %}
                                 </select>
@@ -101,8 +101,8 @@
                                             <h2>Mode of Transport</h2>
                                             <div class="travel-select-icon">
                                                 <select name="mot" class="form-control">
-                                                    {% for k,v in m.items %}
-                                                    <option value="{{k}}">{{v}}</option>
+                                                    {% for g,y in m.items %}
+                                                    <option value="{{g}}"{% if v.mot == g %} selected {% endif %}>{{y}}</option>
                     
                                                    {% endfor %}
                                 </select>

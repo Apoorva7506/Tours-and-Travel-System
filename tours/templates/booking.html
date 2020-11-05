@@ -2,7 +2,7 @@
 <br><br>
 <div class="container">
     <div class="row">
-        <form action={% url 'book' %} method="POST">
+        <form action={% url 'book' p.id %}>
             {% csrf_token %}
             <div class="col-md-9">
                 <div class="single-travel-boxes ">
@@ -56,20 +56,10 @@
                                     <div class="single-tab-select-box ">
                                         <h2>Passengers</h2>
 
-                                        <div class="travel-select-icon ">
-                                            <select class="form-control " name="pass">
-                                  <option value="default ">
-                                    No. of Passengers
-                                  </option>
-  
-                                  <option value="1 ">1</option>
-  
-                                  <option value="2 ">2</option>
-  
-                                  <option value="3 ">3</option>
-                                  <option value="4 ">4</option>
-                                  <option value="5">5</option>
-                                </select>
+                                        <div>
+                                            <input class="form-control " name="pass">
+
+                                            </input>
                                         </div>
 
                                         <!-- /.travel-select-icon -->
@@ -85,8 +75,8 @@
 
                                         <div class="travel-select-icon ">
                                             <select class="form-control " name="food">
-                                  <option value="default ">
-                                    Food
+                                  <option value="Any">
+                                    Any
                                   </option>
   
                                   <option value="Yes">Yes</option>
@@ -109,8 +99,8 @@
 
                                         <div class="travel-select-icon ">
                                             <select class="form-control " name="pay">
-                                  <option value="default ">
-                                    Payment Mode
+                                  <option value="Any">
+                                    Any
                                   </option>
   
                                   <option value="Card">Card</option>
@@ -127,29 +117,10 @@
                                 </div>
 
 
-                                <div class="col-lg-4 col-md-1 col-sm-4 ">
-                                    <div class="single-tab-select-box ">
-                                        <h2>Mode of Transport</h2>
-                                        <div class="travel-select-icon ">
-                                            <select class="form-control " name="mot">
-                                  <option value="default ">Any</option>
-  
-                                  <option value="1 ">1</option>
-  
-                                  <option value="2 ">2</option>
-  
-                                  <option value="3 ">3</option>
-                                </select>
-                                        </div>
-                                        <!-- /.travel-select-icon -->
-                                    </div>
-                                    <!--/.single-tab-select-box-->
-                                </div>
-
 
                                 <div class="row ">
                                     <div class="about-btn travel-mrt-0 pull-right ">
-                                        <button class="about-view travel-btn ">Book</button>
+                                        <button class="about-view travel-btn " type="submit">Book</button>
 
                                     </div>
                                 </div>
@@ -163,21 +134,37 @@
         </form>
         <div class="col-md-3">
             <div class="single-travel-boxes ">
-                <img src="{% static 'assets/images/packages/p2.jpg' %}" alt="package-place" />
+                <img src="{{p.ppic.url}}" alt="package-place" />
                 <div class="single-package-item-txt" style="margin-top:10px;">
-                    <h3>england <span class="pull-right">$1499</span></h3>
+                    <h3>{{p.distination.dname}}<span class="pull-right"><i class="fa fa-rupee"></i>{{p.cost}}</span></h3>
                     <div class="packages-para">
                         <p>
                             <span>
-                <i class="fa fa-angle-right"></i> 5 daays 6 nights
-              </span>
-                            <i class="fa fa-angle-right"></i> 5 star accomodation
+                <i class="fa fa-angle-right"></i> {{p.days}} Days
+              </span><br><br>
+                            <i class="fa fa-angle-right"></i> Tier {{p.hotel.tier}} accomodation
                         </p>
                         <p>
                             <span>
-                <i class="fa fa-angle-right"></i> transportation
+                <i class="fa fa-angle-right"></i>{{p.mot.t_type}} Transportation
               </span>
-                            <i class="fa fa-angle-right"></i> food facilities
+                            <div class="packages-review">
+
+                                <p>{{p.review}} &nbsp;
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i> Reviews
+                            </div>
+                            </p>
+
+                            </span>
+
+
+
+
+
                         </p>
                     </div>
                     <!--/.packages-para--><br><br>

@@ -46,132 +46,114 @@
                     <div class="tab-content">
 
                         <div class="tab-para">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-12">
-                                    <div class="single-tab-select-box">
-                                        <h2>destination</h2>
-
-                                        <div class="travel-select-icon">
-                                            <select class="form-control">
-                                <option value="default">
-                                  enter your destination city
-                                </option>
-
-                                <option value="turkey">turkey</option>
-
-                                <option value="russia">russia</option>
-
-                                <option value="egept">egypt</option>
-                              </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-4 col-sm-12">
-                                    <div class="single-tab-select-box">
-                                        <h2>destination State</h2>
-
-                                        <div class="travel-select-icon">
-                                            <select class="form-control">
-                                <option value="default">
-                                  enter your destination city
-                                </option>
-
-                                <option value="turkey">turkey</option>
-
-                                <option value="russia">russia</option>
-
-                                <option value="egept">egypt</option>
-                              </select>
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-
-                                <div class="col-lg-2 col-md-3 col-sm-4">
-                                    <div class="single-tab-select-box">
-                                        <h2>check in</h2>
-                                        <div class="travel-check-icon">
-                                            <form action="#">
-                                                <input type="date" name="check_in" class="form-control" />
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="col-lg-2 col-md-1 col-sm-4">
-                                    <div class="single-tab-select-box">
-                                        <h2>duration</h2>
-                                        <div class="travel-select-icon">
-                                            <select class="form-control">
-                                <option value="default">5</option>
-
-                                <option value="10">10</option>
-
-                                <option value="15">15</option>
-
-                                <option value="20">20</option>
-                              </select>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="col-lg-2 col-md-1 col-sm-4">
-                                    <div class="single-tab-select-box">
-                                        <h2>Hotel Tier</h2>
-                                        <div class="travel-select-icon">
-                                            <select class="form-control">
-                                <option value="default">Any</option>
-
-                                <option value="1">1</option>
-
-                                <option value="2">2</option>
-
-                                <option value="3">3</option>
-                              </select>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="col-lg-4 col-md-1 col-sm-4">
-                                    <div class="single-tab-select-box">
-                                        <h2>Mode of Transport</h2>
-                                        <div class="travel-select-icon">
-                                            <select class="form-control">
-                                <option value="default">Any</option>
-
-                                <option value="1">1</option>
-
-                                <option value="2">2</option>
-
-                                <option value="3">3</option>
-                              </select>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
+                            <form action="{% url 'search'%}">
                                 <div class="row">
-                                    <div class="about-btn travel-mrt-0 pull-right">
-                                        <button class="about-view travel-btn">search</button>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="single-tab-select-box">
+                                            <h2>destination</h2>
 
+                                            <div class="travel-select-icon">
+                                                <select name="dest" class="form-control">
+                                  <option value="Any">
+                                    enter your destination city
+                                  </option>
+                                  {% for k in d %}
+                                  <option value="{{k.dname}}">{{k.dname}}</option>{% endfor %}
+  
+                                                                </select>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                </div>
+
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="single-tab-select-box">
+                                            <h2>destination State</h2>
+
+                                            <div class="travel-select-icon">
+                                                <select name="state" class="form-control">
+                                  <option value="Any">
+                                    enter your destination State
+                                  </option>
+                                  {% for k in s %}
+                                  <option value="{{k}}">{{k}}</option>{% endfor %}
+  
+                                 
+                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4">
+                                        <div class="single-tab-select-box">
+                                            <h2>Max Cost</h2>
+                                            <div class="travel-select-icon">
+                                                <select name="cost" class="form-control">
+                                                    {% for k,v in c.items %}
+                                  <option value="{{k}}">{{v}}</option>
+  
+                                 {% endfor %}
+                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-2 col-md-1 col-sm-4">
+                                        <div class="single-tab-select-box">
+                                            <h2>duration</h2>
+                                            <div class="travel-select-icon">
+                                                <select name="days" class="form-control">
+                                                    {% for k,v in days.items %}
+                                                    <option value="{{k}}">{{v}}</option>
+                    
+                                                   {% endfor %}
+                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-2 col-md-1 col-sm-4">
+                                        <div class="single-tab-select-box">
+                                            <h2>Hotel Tier</h2>
+                                            <div class="travel-select-icon">
+                                                <select name="tier" class="form-control">
+                                                    {% for k,v in t.items %}
+                                                    <option value="{{k}}">{{v}}</option>
+                    
+                                                   {% endfor %}
+                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-1 col-sm-4">
+                                        <div class="single-tab-select-box">
+                                            <h2>Mode of Transport</h2>
+                                            <div class="travel-select-icon">
+                                                <select name="mot" class="form-control">
+                                                    {% for k,v in m.items %}
+                                                    <option value="{{k}}">{{v}}</option>
+                    
+                                                   {% endfor %}
+                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="about-btn travel-mrt-0 pull-right">
+                                            <button class="about-view travel-btn" type="submit">search</button>
+
+                                        </div>
+                            </form>
                             </div>
-
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>

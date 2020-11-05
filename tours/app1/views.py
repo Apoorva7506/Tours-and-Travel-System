@@ -4,15 +4,29 @@ from .models import *
 from django.contrib import auth
 from django.contrib import messages
 import re
+from .choices import *
 
 
 def index(request):
     u = request.user
+    p = Package.objects.all()
+    d = Destination.objects.all()
+    s = []
+    for j in d:
+        if j.dstate not in s:
+            s.append(j.dstate)
 
     context = {
+        'p': p,
+        'd': d,
+        's': s,
+        'c': cost_c,
+        't': tier_c,
+        'm': mot_c,
+        'days': days_c,
         'u': u,
-
     }
+
     return render(request, 'index.html', context)
 
 
@@ -45,6 +59,7 @@ def register(request):
             user.save()
             messages.info(request, "You are now registered")
             return redirect('index')
+
 
 def login(request):
     if request.method == 'POST':
@@ -86,23 +101,115 @@ def logout(request):
         return redirect('index')
 
 
-def book(request):
-    if request.method == 'POST':
-        if request.POST['check_in'] == '' or request.POST["pass"] == " No. of Passengers " or request.POST["rooms"] == " Rooms " or request.POST["food"] == " Food " or request.POST["pay"] == " Payment Mode ":
-            messages.info(request, "Please provide valid details")
-            return redirect('index')
-        else:
-            messages.info(request, "Booking Successful")
-            return redirect('index')
+def booking(request, p_id):
+    p = Package.objects.get(pk=p_id)
+    return render(request, 'booking.html', {'p': p})
 
 
 def browse(request):
     p = Package.objects.all()
+    d = Destination.objects.all()
+    s = []
+    for j in d:
+        if j.dstate not in s:
+            s.append(j.dstate)
+
     context = {
-        'p': p
+        'p': p,
+        'd': d,
+        's': s,
+        'c': cost_c,
+        't': tier_c,
+        'm': mot_c,
+        'days': days_c
     }
     return render(request, 'browse.html', context)
 
-def package(request,p_id):
-    p=Package.objects.get(pk=p_id)
-    return render(request,'package.html',{'p':p})
+
+def search(request):
+    if request.user.is_authenticated:
+        p = Package.objects.all()
+
+        if 'state' in request.GET:
+            state = request.GET['state']
+            if state != "Any":
+                p = p.filter(destination__dstate=state)
+
+        if 'dest' in request.GET:
+            dest = request.GET['dest']
+            if dest != "Any":
+                p = p.filter(destination__dname=dest)
+
+        if 'tier' in request.GET:
+            tier = request.GET['tier']
+            if tier != "Any":
+                p = p.filter(hotel__tier=tier)
+
+        if 'mot' in request.GET:
+            mot = request.GET['mot']
+            if mot != "Any":
+                p = p.filter(mot__t_type=mot)
+
+        if 'cost' in request.GET:
+            cost = request.GET['cost']
+            if cost != "Any":
+                p = p.filter(cost__lte=int(cost))
+
+        if 'days' in request.GET:
+            days = request.GET['days']
+            if days != "Any":
+                p = p.filter(days=int(days))
+
+        d = Destination.objects.all()
+        s = []
+        for j in d:
+            if j.dstate not in s:
+                s.append(j.dstate)
+
+        context = {
+            'p': p,
+            'd': d,
+            's': s,
+            'c': cost_c,
+            't': tier_c,
+            'm': mot_c,
+            'days': days_c,
+            'v': request.GET
+        }
+        return render(request, 'browse2.html', context)
+    else:
+        messages.info(request, "Login Required")
+        return redirect('index')
+
+
+def package(request, p_id):
+    p = Package.objects.get(pk=p_id)
+    return render(request, 'package.html', {'p': p})
+
+
+def book(request, p_id):
+    p = Package.objects.get(pk=p_id)
+    u = request.user
+    checkin = request.GET['check_in']
+    ppl = request.GET['pass']
+    food = request.GET['food']
+    rooms = request.GET['rooms']
+    pay = request.GET['pay']
+
+    if(u == '' or rooms == '' or ppl == '' or pay == 'Any' or food == 'Any'):
+        messages.info(request, "Please fill the form properly")
+        return render(request, 'booking.html', {'p': p})
+    else:
+        tcost = p.cost*int(ppl)
+        r = int(int(ppl)/2)
+        r1 = int(rooms)-r
+        if(r1 > 0):
+            tcost = tcost+tcost*0.2*r1
+        if(food == "Yes"):
+            tcost = tcost+tcost*0.2
+        b = Booking(trip_date=checkin, n_people=ppl, total=tcost,
+                    payment_mode=pay, rooms=int(rooms), package=p, customer=u)
+        b.save()
+        messages.info(request, "Booking Successful\n Total is " +
+                      str(b.total)+"\n Thank You!")
+        return redirect('index')
