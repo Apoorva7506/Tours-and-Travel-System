@@ -103,6 +103,6 @@ def browse(request):
     }
     return render(request, 'browse.html', context)
 
-def showpackage(request,p_id):
+def package(request,p_id):
     p=Package.objects.get(pk=p_id)
     return render(request,'package.html',{'p':p})
