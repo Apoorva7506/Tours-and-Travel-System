@@ -36,17 +36,11 @@ ul.tabs li a {
   transition: padding 0.2s ease, margin 0.2s ease;
 }
 .tabs li:first-child a {
-  z-index: 5;
+  z-index: 3;
   border-top-left-radius: 8px;
 }
 .tabs li:nth-child(2) a {
-  z-index: 4;
-}
-.tabs li:nth-child(3) a {
-    z-index: 3;
-}
-.tabs li:nth-child(4) a {
-    z-index: 2;
+  z-index: 2;
 }
 .tabs li:last-child a {
   z-index: 1;
@@ -66,30 +60,30 @@ ul.tabs li a.active {
 }
 .group:before,
 .group:after {
-  content: " "; /* 1 */
-  display: table; /* 2 */
+  content: " "; 
+  display: table; 
 }
 .group:after {
   clear: both;
 }
 #terms {
   width: 1000px;
-  height: 200px;
+  height: max-content;
   margin: 0 auto;
   background: #aaabac;
   transform: translateY(-10px);
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
 }
-#terms p {
+#terms>div>p {
   font-family: "Open Sans", sans-serif;
-  padding: 30px 40px;
+  padding: 20px 30px;
   color: black;
-  line-height: 26px;
+  line-height:20px;
   font-size: 18px;
   margin: 0;
 }
 
-#hotel,#mot,#number,#spots {
+#hotel,#dest {
   display: none;
 }
