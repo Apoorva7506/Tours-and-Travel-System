@@ -130,6 +130,9 @@ class PopularSpots(models.Model):
     popic = models.ImageField(
         upload_to='pop/%Y/%m/%d/', blank=True, default='media/h.jpg')
 
+    def __str__(self):
+        return self.pname
+
 
 class Hotel(models.Model):
     info = models.TextField(blank=True, null=True)
@@ -151,10 +154,16 @@ class Luxury(models.Model):
     hotel = models.ForeignKey(Destination, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class Mot(models.Model):
     fare = models.FloatField()
     t_type = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.t_type + ' ' + str(self.fare)
 
 
 class Roadways(models.Model):
@@ -186,6 +195,9 @@ class Package(models.Model):
         upload_to='package/%Y/%m/%d/', blank=True, default='media/h.jpg')
     review = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
 
 class Booking(models.Model):
 
@@ -198,3 +210,6 @@ class Booking(models.Model):
     customer = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
+
+    def __str__(self):
+        return self.package.name + ' ' + self.customer.first_name

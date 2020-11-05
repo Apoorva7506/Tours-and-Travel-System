@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block content %} {% include 'navbar.html' %}
-<div class="container">
+<div>
     <div id="myCarousel" class="carousel slide carclass" data-ride="carousel" style="width: 70%; margin: auto">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -178,22 +178,20 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="filtr-item">
-                                    <img 
-                                    style="height: 865px;"
-                                    src="https://i.pinimg.com/originals/06/56/69/0656699ec9d3812695cfbdb06b0b0509.jpg" alt="portfolio image" />
+                                    <img style="height: 865px;" src="https://i.pinimg.com/originals/06/56/69/0656699ec9d3812695cfbdb06b0b0509.jpg" alt="portfolio image" />
                                     <div class="item-title">
                                         <a href="#"> Mumbai </a>
-                                        <p><span>15 places</span></p>
+
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="filtr-item">
-                                    <img src="https://img.etimg.com/thumb/width-640,height-480,imgsize-928853,resizemode-1,msid-70974754/magazines/panache/worlds-most-liveable-cities-new-delhi-slips-6-places-due-to-pollution-crime-mumbai-follows/new-delhi-registered-the-biggest-decline-in-asia-.jpg" alt="portfolio image" />
+                                    <img src="https://img.etimg.com/thumb/width-640,height-480,imgsize-928853,resizemode-1,msid-70974754/magazines/panache/worlds-most-liveable-cities-new-delhi-slips-6-places-due-to-pollution-crime-mumbai-follows/new-delhi-registered-the-biggest-decline-in-asia-.jpg"
+                                        alt="portfolio image" />
                                     <div class="item-title">
                                         <a href="#"> Delhi </a>
-                                        <p><span>9 places</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -201,11 +199,10 @@
 
                             <div class="col-md-6">
                                 <div class="filtr-item">
-                                    <img src="https://static.toiimg.com/photo/66710074/jodhpur.jpg?width=748&resize=4"
-                                     alt="portfolio image" />
+                                    <img src="https://static.toiimg.com/photo/66710074/jodhpur.jpg?width=748&resize=4" alt="portfolio image" />
                                     <div class="item-title">
                                         <a href="#"> Jodhpur </a>
-                                        <p><span>9 places</span></p>
+
                                     </div>
                                 </div>
                             </div>
@@ -213,12 +210,10 @@
 
                             <div class="col-md-5">
                                 <div class="filtr-item">
-                                    <img 
-                                    style="height:220px;"
-                                    src="https://lh3.googleusercontent.com/proxy/nwN1s0-pLdceVQd55c09gCoPla9qLfWgBVqBHIu5vAzlYQY69CRWiuF8jlbwNWPQUbWfcaSlvlFCpIovOssX02kCtUH3x5pQfAT2FOPQTKNoiWB3xRTPjGyCjoUbu6w" alt="portfolio image" />
+                                    <img style="height:220px;" src="https://media.audleytravel.com/-/media/images/home/indian-subcontinent/india/country-guides/kerala-for-the-first-time-visitor/75667681_kerala_house_boat_3000x1000.jpg?q=79&w=1920&h=640" alt="portfolio image" />
                                     <div class="item-title">
                                         <a href="#"> Sikkim </a>
-                                        <p><span>12 places</span></p>
+
                                     </div>
                                 </div>
                             </div>
@@ -228,7 +223,7 @@
                                     <img src="https://media.audleytravel.com/-/media/images/home/indian-subcontinent/india/country-guides/kerala-for-the-first-time-visitor/75667681_kerala_house_boat_3000x1000.jpg?q=79&w=1920&h=640" alt="portfolio image" />
                                     <div class="item-title">
                                         <a href="#">Kerela </a>
-                                        <p><span>6 places</span></p>
+
                                     </div>
                                 </div>
                             </div>
@@ -243,241 +238,63 @@
 <section id="pack" class="packages">
     <div class="container">
         <div class="gallary-header text-center">
-            <h2>special packages</h2>
+            <h2>Most Popular packages</h2>
             <p>
-                Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+
             </p>
         </div>
         <div class="packages-content">
             <div class="row">
+                {% for i in p %}
                 <div class="col-md-4 col-sm-6">
                     <div class="single-package-item">
-                        <img src="{% static 'assets/images/packages/p1.jpg' %}" alt="package-place" />
+                        <img src="{{i.ppic.url}}" alt="package-place" />
                         <div class="single-package-item-txt">
-                            <h3>italy <span class="pull-right">$499</span></h3>
+                            <h3>{{i.name}} <span class="pull-right"> <i class="fa fa-rupee"></i>{{i.cost}}</span></h3>
                             <div class="packages-para">
                                 <p>
                                     <span>
-                        <i class="fa fa-angle-right"></i> 5 daays 6 nights
+                        <i class="fa fa-angle-right"></i> {{i.days}} days 
                       </span>
-                                    <i class="fa fa-angle-right"></i> 5 star accomodation
+                                    <i class="fa fa-angle-right"></i> Tier {{i.hotel.tier}} accomodation
                                 </p>
                                 <p>
                                     <span>
-                        <i class="fa fa-angle-right"></i> transportation
+                        <i class="fa fa-angle-right"></i> {{i.mot.t_type}} transportation
                       </span>
-                                    <i class="fa fa-angle-right"></i> food facilities
+
                                 </p>
                             </div>
                             <div class="packages-review">
-                                <p>
+                                <p><span>{{i.review}} &nbsp;</span>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
-                                    <span>2544 review</span>
+                                    <span> reviews</span>
                                 </p>
                             </div>
                             <div class="about-btn">
-                                <button class="about-view packages-btn">book now</button>
+                                <button class="about-view packages-btn"><a href="{% url 'package' i.id%}" style="color: white">View</a></button>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
 
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-package-item">
-                        <img src="{% static 'assets/images/packages/p2.jpg' %}" alt="package-place" />
-                        <div class="single-package-item-txt">
-                            <h3>england <span class="pull-right">$1499</span></h3>
-                            <div class="packages-para">
-                                <p>
-                                    <span>
-                        <i class="fa fa-angle-right"></i> 5 daays 6 nights
-                      </span>
-                                    <i class="fa fa-angle-right"></i> 5 star accomodation
-                                </p>
-                                <p>
-                                    <span>
-                        <i class="fa fa-angle-right"></i> transportation
-                      </span>
-                                    <i class="fa fa-angle-right"></i> food facilities
-                                </p>
-                            </div>
-                            <div class="packages-review">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span>2544 review</span>
-                                </p>
-                            </div>
 
-                            <div class="about-btn">
-                                <button class="about-view packages-btn">book now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-package-item">
-                        <img src="{% static 'assets/images/packages/p3.jpg' %}" alt="package-place" />
-                        <div class="single-package-item-txt">
-                            <h3>france <span class="pull-right">$1199</span></h3>
-                            <div class="packages-para">
-                                <p>
-                                    <span>
-                        <i class="fa fa-angle-right"></i> 5 daays 6 nights
-                      </span>
-                                    <i class="fa fa-angle-right"></i> 5 star accomodation
-                                </p>
-                                <p>
-                                    <span>
-                        <i class="fa fa-angle-right"></i> transportation
-                      </span>
-                                    <i class="fa fa-angle-right"></i> food facilities
-                                </p>
-                            </div>
-                            <div class="packages-review">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span>2544 review</span>
-                                </p>
-                            </div>
-
-                            <div class="about-btn">
-                                <button class="about-view packages-btn">book now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-package-item">
-                        <img src="{% static 'assets/images/packages/p4.jpg' %}" alt="package-place" />
-                        <div class="single-package-item-txt">
-                            <h3>india <span class="pull-right">$799</span></h3>
-                            <div class="packages-para">
-                                <p>
-                                    <span>
-                        <i class="fa fa-angle-right"></i> 5 daays 6 nights
-                      </span>
-                                    <i class="fa fa-angle-right"></i> 5 star accomodation
-                                </p>
-                                <p>
-                                    <span>
-                        <i class="fa fa-angle-right"></i> transportation
-                      </span>
-                                    <i class="fa fa-angle-right"></i> food facilities
-                                </p>
-                            </div>
-                            <div class="packages-review">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span>2544 review</span>
-                                </p>
-                            </div>
-
-                            <div class="about-btn">
-                                <button class="about-view packages-btn">book now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-package-item">
-                        <img src="{% static 'assets/images/packages/p5.jpg' %}" alt="package-place" />
-                        <div class="single-package-item-txt">
-                            <h3>spain <span class="pull-right">$999</span></h3>
-                            <div class="packages-para">
-                                <p>
-                                    <span>
-                        <i class="fa fa-angle-right"></i> 5 daays 6 nights
-                      </span>
-                                    <i class="fa fa-angle-right"></i> 5 star accomodation
-                                </p>
-                                <p>
-                                    <span>
-                        <i class="fa fa-angle-right"></i> transportation
-                      </span>
-                                    <i class="fa fa-angle-right"></i> food facilities
-                                </p>
-                            </div>
-                            <div class="packages-review">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span>2544 review</span>
-                                </p>
-                            </div>
-                            <div class="about-btn">
-                                <button class="about-view packages-btn">book now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-package-item">
-                        <img src="{% static 'assets/images/packages/p6.jpg' %}" alt="package-place" />
-                        <div class="single-package-item-txt">
-                            <h3>thailand <span class="pull-right">$799</span></h3>
-                            <div class="packages-para">
-                                <p>
-                                    <span>
-                        <i class="fa fa-angle-right"></i> 5 days 6 nights
-                      </span>
-                                    <i class="fa fa-angle-right"></i> 5 star accomodation
-                                </p>
-                                <p>
-                                    <span>
-                        <i class="fa fa-angle-right"></i> transportation
-                      </span>
-                                    <i class="fa fa-angle-right"></i> food facilities
-                                </p>
-                            </div>
-                            <div class="packages-review">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span>2544 review</span>
-                                </p>
-                            </div>
-                            <div class="about-btn">
-                                <button class="about-view packages-btn">book now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </section>
+<hr>
 <div class="foot-icons hi ">
-    <ul class="footer-social-links list-inline list-unstyled">
+    <ul class="footer-social-links list-inline ">
         <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa fa-facebook"></i></a></li>
         <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa fa-twitter"></i></a></li>
         <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa fa-instagram"></i></a></li>
     </ul>
-    <p>travellify@gmail.com <br/> 9876543210 </p>
+    <br>
 </div>
 {% endblock %}

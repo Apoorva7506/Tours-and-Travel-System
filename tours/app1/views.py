@@ -9,7 +9,7 @@ from .choices import *
 
 def index(request):
     u = request.user
-    p = Package.objects.all()
+    p = Package.objects.all().order_by('-review')[:6]
     d = Destination.objects.all()
     s = []
     for j in d:
@@ -103,7 +103,7 @@ def logout(request):
 
 def booking(request, p_id):
     p = Package.objects.get(pk=p_id)
-    return render(request, 'booking.html', {'p': p})
+    return render(request, 'booking.html', {'u': request.user, 'p': p})
 
 
 def browse(request):
@@ -115,6 +115,7 @@ def browse(request):
             s.append(j.dstate)
 
     context = {
+        'u': request.user,
         'p': p,
         'd': d,
         's': s,
@@ -183,10 +184,14 @@ def search(request):
 
 
 def package(request, p_id):
-    p = Package.objects.get(pk=p_id)
-    pop = PopularSpots.objects.filter(d_id=p.destination)
-    lux = Luxury.objects.filter(hotel=p.destination)
-    return render(request, 'package.html', {'p': p ,'pop':pop ,'lux' : lux })
+    if request.user.is_authenticated:
+        p = Package.objects.get(pk=p_id)
+        pop = PopularSpots.objects.filter(d_id=p.destination)
+        lux = Luxury.objects.filter(hotel=p.destination)
+        return render(request, 'package.html', {'u': request.user, 'p': p, 'pop': pop, 'lux': lux})
+    else:
+        messages.info(request, "Login Required")
+        return redirect('index')
 
 
 def book(request, p_id):
@@ -212,6 +217,6 @@ def book(request, p_id):
         b = Booking(trip_date=checkin, n_people=ppl, total=tcost,
                     payment_mode=pay, rooms=int(rooms), package=p, customer=u)
         b.save()
-        messages.info(request, "Booking Successful\n Total is " +
+        messages.info(request, "Booking Successful\n Total is Rs." +
                       str(b.total)+"\n Thank You!")
         return redirect('index')
