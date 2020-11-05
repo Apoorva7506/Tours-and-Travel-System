@@ -105,7 +105,6 @@ top:77px">
 </div>
 {% endif %} <br><br><br><br>
 <link rel="stylesheet" href="{% static 'assets/images/package.css' %}" />
-<h2 style="color: aqua;text-align:center">{{p.name}}</h2>
 <div id="myCarousel" class="carousel slide  packcar" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -115,18 +114,30 @@ top:77px">
     </ol>
     <div class="carousel-inner">
         <div class="item active">
-            <img src="{% static 'assets/images/jk.jpg' %}" style="width: 100%; height: 480px" />
+            <img src="{{p.ppic.url}}" style="width: 100%; height: 480px" />
+            <div class="carousel-caption">
+                <h3 style="color: aqua;text-align:center;background:black ;margin-left:auto;margin-right:auto; padding:10px;width:max-content">{{p.name}}</h3>
+            </div>
         </div>
 
         <div class="item">
-            <img src="{% static 'assets/images/agra.jpg' %}" style="width: 100%; height: 480px" />
+            <img src="{{pop.0.popic.url}}" style="width: 100%; height: 480px" />
+            <div class="carousel-caption">
+                <h3 style="color: aqua;text-align:center ; background:black ; margin-left:auto;margin-right:auto; padding:10px;width:max-content">{{pop.0.pname}}</h3>
+            </div>
         </div>
 
         <div class="item">
-            <img src="{% static 'assets/images/punjab.jpg' %}" style="width: 100%; height: 480px" />
+            <img src="{{pop.1.popic.url}}" style="width: 100%; height: 480px" />
+            <div class="carousel-caption">
+                <h3 style="color: aqua;text-align:center;background:black ;margin-left:auto;margin-right:auto; padding:10px ;width:max-content">{{pop.1.pname}}</h3>
+            </div>
         </div>
         <div class="item">
-            <img src="{% static 'assets/images/munnar.jpg' %}" style="width: 100%; height: 480px" />
+            <img src="{{pop.2.popic.url}}" style="width: 100%; height: 480px" />
+            <div class="carousel-caption">
+                <h3 style="color: aqua;text-align:center;background:black ;margin-left:auto;margin-right:auto; padding:10px;width:max-content">{{pop.2.pname}}</h3>
+            </div>
         </div>
     </div>
 
@@ -156,22 +167,23 @@ top:77px">
             <p>Hotel: {{p.hotel.hname}}</p>
             <p>Information: {{p.hotel.info}} </p>
             <p>Tier : {{p.hotel.tier}} </p>
-            <p>Luxuries : </p>
+            <p>Luxuries : 
+                {% for i in lux %}
+                {{i.name}} |
+                {% endfor %}
+            </p>
         </div>
         <div id="dest">
             <p>Destination: {{p.destination.dname}}</p>
             <p>State: {{p.destination.dstate}} </p>
             <p>Information : {{p.destination.info}} </p>
-            <p>Popular Spots : </p>
         </div>
     </div>
 </div>
 
 <script>
     (function($) {
-
         var tabs = $(".tabs li a");
-
         tabs.click(function() {
             var terms = this.hash.replace('/', '');
             tabs.removeClass("active");
