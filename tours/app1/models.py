@@ -161,27 +161,13 @@ class Luxury(models.Model):
 class Mot(models.Model):
     fare = models.FloatField()
     t_type = models.CharField(max_length=20)
+    cartype = models.CharField(max_length=20, null=True, blank=True)
+
+    c_class = models.CharField(max_length=20, null=True, blank=True)
+    A_class = models.CharField(max_length=20, null=True, blank=True)
 
     def __str__(self):
         return self.t_type + ' ' + str(self.fare)
-
-
-class Roadways(models.Model):
-    mot = models.ForeignKey(Mot, on_delete=models.CASCADE)
-    carname = models.CharField(max_length=30)
-    cartype = models.CharField(max_length=20)
-
-
-class Railways(models.Model):
-    mot = models.ForeignKey(Mot, on_delete=models.CASCADE)
-    ac_nac = models.CharField(max_length=20)
-    c_class = models.CharField(max_length=20)
-
-
-class Airways(models.Model):
-    mot = models.ForeignKey(Mot, on_delete=models.CASCADE)
-    foodAC = models.CharField(max_length=20)
-    A_class = models.CharField(max_length=20)
 
 
 class Package(models.Model):

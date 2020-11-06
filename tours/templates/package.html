@@ -174,7 +174,16 @@ top:77px">
         <div id="info">
             <p>Number of days: {{p.days}}</p>
             <p>Mode of transport : {{p.mot.t_type}} </p>
+            {% if 'Railway' in p.mot.t_type %}
+            <p>Compartment Type: {{p.mot.c_class}} Compartment</p>
+            {% elif 'Roadway' in p.mot.t_type %}
+            <p>Car Type: {{i.mot.cartype}} </p>
+            {% elif 'Airway' in p.mot.t_type %}
+            <p>Airplane Class: {{p.mot.A_class}} </p>
+            {% endif %}
             <p>Cost : ₹{{p.cost}} </p>
+            <p>Transportation Cost : ₹{{p.mot.fare}} </p>
+
         </div>
         <div id="hotel">
             <p>Hotel: {{p.hotel.hname}}</p>

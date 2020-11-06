@@ -208,6 +208,7 @@ def book(request, p_id):
         return render(request, 'booking.html', {'p': p})
     else:
         tcost = p.cost*int(ppl)
+        tcost = tcost+p.mot.fare*int(ppl)
         r = int(int(ppl)/2)
         r1 = int(rooms)-r
         if(r1 > 0):

@@ -157,9 +157,17 @@
                                 </p>
                                 <p>
                                     <span>
-                        <i class="fa fa-angle-right"></i> {{i.mot.t_type}} transportation
-                      </span>
-
+                        <i class="fa fa-angle-right"></i> {{i.mot.t_type}} Rransportation
+                      </span> {% if 'Railway' in i.mot.t_type %}
+                                    <span>
+                        <i class="fa fa-angle-right"></i> {{i.mot.c_class}} Compartment
+                      </span> {% elif 'Roadway' in i.mot.t_type %}
+                                    <span>
+                        <i class="fa fa-angle-right"></i> {{i.mot.cartype}} Car
+                      </span> {% elif 'Airway' in i.mot.t_type %}
+                                    <span>
+                        <i class="fa fa-angle-right"></i> {{i.mot.A_class}} Class
+                      </span> {% endif %}
                                 </p>
                             </div>
                             <div class="packages-review">
@@ -173,7 +181,7 @@
                                 </p>
                             </div>
                             <div class="about-btn">
-                                <button class="about-view packages-btn"><a href="{% url 'package' i.id%}" style="color: white">View</a></button>
+                                <button class="about-view packages-btn"><a href="{% url 'package' i.id%}" style="color: white">Book now</a></button>
                             </div>
                         </div>
                     </div>
