@@ -189,6 +189,7 @@ class Booking(models.Model):
 
     n_people = models.IntegerField()
     trip_date = models.DateField()
+    booking_date=models.DateField(null=True,blank=True,auto_now_add=True)
     total = models.FloatField()
     rooms = models.IntegerField()
     payment_mode = models.CharField(max_length=50)
