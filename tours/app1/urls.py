@@ -13,5 +13,6 @@ urlpatterns = [
     path('browse', views.browse, name='browse'),
     path('package/<int:p_id>', views.package, name='package'),
     path('book/<int:p_id>', views.book, name='book'),
+    path('booked', views.booked, name='booked'),
     path('search', views.search, name='search')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

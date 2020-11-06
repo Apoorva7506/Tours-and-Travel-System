@@ -221,3 +221,13 @@ def book(request, p_id):
         messages.info(request, "Booking Successful\n Total is Rs." +
                       str(b.total)+"\n Thank You!")
         return redirect('index')
+
+
+def booked(request):
+    u = request.user
+    b = Booking.objects.filter(customer=u).order_by('-trip_date')
+    context = {
+        'b': b,
+        'u': u
+    }
+    return render(request, 'booked.html', context)

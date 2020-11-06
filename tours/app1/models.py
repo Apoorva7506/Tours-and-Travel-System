@@ -197,5 +197,10 @@ class Booking(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
 
+    def save(self, *args, **kwargs):
+        self.package.review = self.package.review+1
+        self.package.save()
+        super(Booking, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.package.name + ' ' + self.customer.first_name
