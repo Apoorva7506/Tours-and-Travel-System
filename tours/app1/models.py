@@ -138,7 +138,7 @@ class Hotel(models.Model):
     info = models.TextField(blank=True, null=True)
     tier = models.IntegerField()
     hname = models.CharField(max_length=255)
-    street = models.CharField(max_length=255)
+    locality = models.CharField(max_length=255)
     d_id = models.ForeignKey(Destination, on_delete=models.CASCADE)
     hpic = models.ImageField(
         upload_to='hotel/%Y/%m/%d/', blank=True, default='media/h.jpg')
@@ -151,7 +151,7 @@ class Hotel(models.Model):
 
 
 class Luxury(models.Model):
-    hotel = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    hotel = models.ForeignKey(Hotel, on_delete=models.PROTECT)
     name = models.CharField(max_length=255)
 
     def __str__(self):
