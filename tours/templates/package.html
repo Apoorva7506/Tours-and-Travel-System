@@ -177,7 +177,11 @@ top:77px">
             <p><b><i>Number of days:</i></b> {{p.days}}</p>
             <p><b><i>Mode of transport :</i></b> {{p.mot.t_type}} </p>
             {% if 'Railway' in p.mot.t_type %}
+<<<<<<< HEAD
             <p><b>Compartment Type:</i></b> {{p.mot.c_class}} Compartment</p>
+=======
+            <p><b><i>Compartment Type:</i></b> {{p.mot.c_class}} Compartment</p>
+>>>>>>> 42647014ba19e7eb2f667afa2b3eb691800ca8ac
             {% elif 'Roadway' in p.mot.t_type %}
             <p><b><i>Car Type:</i></b> {{p.mot.cartype }} </p>
             {% elif 'Airway' in p.mot.t_type %}
