@@ -173,32 +173,30 @@ top:77px">
         <li style="width:34%"><a href="#/dest">Destination</a></li>
     </ul>
     <div id="terms" style="width:75%">
-        <div id="info" style="height:350px">
+        <div id="info" style="height:500px">
             <p><b><i>Number of days:</i></b> {{p.days}}</p>
             <p><b><i>Mode of transport :</i></b> {{p.mot.t_type}} </p>
             {% if 'Railway' in p.mot.t_type %}
-<<<<<<< HEAD
-            <p><b>Compartment Type:</i></b> {{p.mot.c_class}} Compartment</p>
-=======
-            <p><b><i>Compartment Type:</i></b> {{p.mot.c_class}} Compartment</p>
->>>>>>> 42647014ba19e7eb2f667afa2b3eb691800ca8ac
-            {% elif 'Roadway' in p.mot.t_type %}
-            <p><b><i>Car Type:</i></b> {{p.mot.cartype }} </p>
-            {% elif 'Airway' in p.mot.t_type %}
-            <p><b><i>Airplane Class:</i></b> {{p.mot.A_class}} </p>
-            {% endif %}
-            <p><b><i>Cost :</i></b> ₹{{p.cost}} </p>
-            <p><b><i>Transportation Cost :</i></b> ₹{{p.mot.fare}} </p>
+            <<<<<<< HEAD <p><b>Compartment Type:</i></b> {{p.mot.c_class}} Compartment</p>
+                =======
+                <p><b><i>Compartment Type:</i></b> {{p.mot.c_class}} Compartment</p>
+                >>>>>>> 42647014ba19e7eb2f667afa2b3eb691800ca8ac {% elif 'Roadway' in p.mot.t_type %}
+                <p><b><i>Car Type:</i></b> {{p.mot.cartype }} </p>
+                {% elif 'Airway' in p.mot.t_type %}
+                <p><b><i>Airplane Class:</i></b> {{p.mot.A_class}} </p>
+                {% endif %}
+                <p><b><i>Cost :</i></b> ₹{{p.cost}} </p>
+                <p><b><i>Transportation Cost :</i></b> ₹{{p.mot.fare}} </p>
 
         </div>
-        <div id="hotel" style="height:350px">
+        <div id="hotel" style="height:500px">
             <p><b><i>Hotel:</i></b> {{p.hotel.hname}}</p>
             <p><b><i>Information:</i></b> <br>{{p.hotel.info}} </p>
             <p><b><i>Tier :</i></b> {{p.hotel.tier}} </p>
             <p><b><i>Luxuries :</i></b> {% for i in lux %} {{i.name}} | {% endfor %}
             </p>
         </div>
-        <div id="dest" style="height:350px">
+        <div id="dest" style="height:500px">
             <p><b><i>Destination:</i></b> {{p.destination.dname}}</p>
             <p><b><i>State:</i></b> {{p.destination.dstate}} </p>
             <p><b><i>Information :</i></b><br> {{p.destination.info}} </p>
