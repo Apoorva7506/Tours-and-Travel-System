@@ -187,7 +187,7 @@ def package(request, p_id):
     if request.user.is_authenticated:
         p = Package.objects.get(pk=p_id)
         pop = PopularSpots.objects.filter(d_id=p.destination)
-        lux = Luxury.objects.filter(hotel=p.destination)
+        lux = Luxury.objects.filter(hotel=p.hotel)
         return render(request, 'package.html', {'u': request.user, 'p': p, 'pop': pop, 'lux': lux})
     else:
         messages.info(request, "Login Required")

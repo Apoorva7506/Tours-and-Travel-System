@@ -122,34 +122,36 @@ top:77px">
     <div class="carousel-inner">
         <div class="item active">
             <img src="{{p.ppic.url}}" style="width: 100%; height: 480px" />
-            <div class="carousel-caption">
-                <h3 style="color: aqua;text-align:center;background:black ;margin-left:auto;margin-right:auto; padding:10px;width:max-content">{{p.name}}</h3>
+            <div class="carousel-caption" style="background:rgb(0,0,0,0.5);">
+
+                <h3 style="color: aqua;text-align:center;margin-left:auto;margin-right:auto; padding:10px;width:max-content">{{p.name}}</h3>
+
             </div>
         </div>
         <div class="item">
             <img src="{{p.hotel.hpic.url}}" style="width: 100%; height: 480px" />
-            <div class="carousel-caption">
-                <h3 style="color: aqua;text-align:center ; background:black ; margin-left:auto;margin-right:auto; padding:10px;width:max-content">Hotel: {{p.hotel.hname}}</h3>
+            <div class="carousel-caption" style="background:rgb(0,0,0,0.5);">
+                <h3 style="color: aqua;text-align:center ;  margin-left:auto;margin-right:auto; padding:10px;width:max-content">Hotel: {{p.hotel.hname}}</h3>
             </div>
         </div>
 
         <div class="item">
             <img src="{{pop.0.popic.url}}" style="width: 100%; height: 480px" />
-            <div class="carousel-caption">
-                <h3 style="color: aqua;text-align:center ; background:black ; margin-left:auto;margin-right:auto; padding:10px;width:max-content">{{pop.0.pname}}</h3>
+            <div class="carousel-caption" style="background:rgb(0,0,0,0.5);">
+                <h3 style="color: aqua;text-align:center ;  margin-left:auto;margin-right:auto; padding:10px;width:max-content">{{pop.0.pname}}</h3>
             </div>
         </div>
 
         <div class="item">
             <img src="{{pop.1.popic.url}}" style="width: 100%; height: 480px" />
-            <div class="carousel-caption">
-                <h3 style="color: aqua;text-align:center;background:black ;margin-left:auto;margin-right:auto; padding:10px ;width:max-content">{{pop.1.pname}}</h3>
+            <div class="carousel-caption" style="background:rgb(0,0,0,0.5);">
+                <h3 style="color: aqua;text-align:center;margin-left:auto;margin-right:auto; padding:10px ;width:max-content">{{pop.1.pname}}</h3>
             </div>
         </div>
         <div class="item">
             <img src="{{pop.2.popic.url}}" style="width: 100%; height: 480px" />
-            <div class="carousel-caption">
-                <h3 style="color: aqua;text-align:center;background:black ;margin-left:auto;margin-right:auto; padding:10px;width:max-content">{{pop.2.pname}}</h3>
+            <div class="carousel-caption" style="background:rgb(0,0,0,0.5);">
+                <h3 style="color: aqua;text-align:center;margin-left:auto;margin-right:auto; padding:10px;width:max-content">{{pop.2.pname}}</h3>
             </div>
         </div>
     </div>
@@ -171,31 +173,31 @@ top:77px">
         <li style="width:34%"><a href="#/dest">Destination</a></li>
     </ul>
     <div id="terms" style="width:75%">
-        <div id="info">
-            <p>Number of days: {{p.days}}</p>
-            <p>Mode of transport : {{p.mot.t_type}} </p>
+        <div id="info" style="height:350px">
+            <p><b><i>Number of days:</i></b> {{p.days}}</p>
+            <p><b><i>Mode of transport :</i></b> {{p.mot.t_type}} </p>
             {% if 'Railway' in p.mot.t_type %}
-            <p>Compartment Type: {{p.mot.c_class}} Compartment</p>
+            <p><b>Compartment Type:</i></b> {{p.mot.c_class}} Compartment</p>
             {% elif 'Roadway' in p.mot.t_type %}
-            <p>Car Type: {{p.mot.cartype }} </p>
+            <p><b><i>Car Type:</i></b> {{p.mot.cartype }} </p>
             {% elif 'Airway' in p.mot.t_type %}
-            <p>Airplane Class: {{p.mot.A_class}} </p>
+            <p><b><i>Airplane Class:</i></b> {{p.mot.A_class}} </p>
             {% endif %}
-            <p>Cost : ₹{{p.cost}} </p>
-            <p>Transportation Cost : ₹{{p.mot.fare}} </p>
+            <p><b><i>Cost :</i></b> ₹{{p.cost}} </p>
+            <p><b><i>Transportation Cost :</i></b> ₹{{p.mot.fare}} </p>
 
         </div>
-        <div id="hotel">
-            <p>Hotel: {{p.hotel.hname}}</p>
-            <p>Information: {{p.hotel.info}} </p>
-            <p>Tier : {{p.hotel.tier}} </p>
-            <p>Luxuries : {% for i in lux %} {{i.name}} | {% endfor %}
+        <div id="hotel" style="height:350px">
+            <p><b><i>Hotel:</i></b> {{p.hotel.hname}}</p>
+            <p><b><i>Information:</i></b> <br>{{p.hotel.info}} </p>
+            <p><b><i>Tier :</i></b> {{p.hotel.tier}} </p>
+            <p><b><i>Luxuries :</i></b> {% for i in lux %} {{i.name}} | {% endfor %}
             </p>
         </div>
-        <div id="dest">
-            <p>Destination: {{p.destination.dname}}</p>
-            <p>State: {{p.destination.dstate}} </p>
-            <p>Information : {{p.destination.info}} </p>
+        <div id="dest" style="height:350px">
+            <p><b><i>Destination:</i></b> {{p.destination.dname}}</p>
+            <p><b><i>State:</i></b> {{p.destination.dstate}} </p>
+            <p><b><i>Information :</i></b><br> {{p.destination.info}} </p>
         </div>
     </div>
 </div>

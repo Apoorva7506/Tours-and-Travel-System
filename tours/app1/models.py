@@ -131,7 +131,7 @@ class PopularSpots(models.Model):
         upload_to='pop/%Y/%m/%d/', blank=True, default='media/h.jpg')
 
     def __str__(self):
-        return self.pname
+        return (self.pname+" - "+self.d_id.dname)
 
 
 class Hotel(models.Model):
@@ -144,7 +144,7 @@ class Hotel(models.Model):
         upload_to='hotel/%Y/%m/%d/', blank=True, default='media/h.jpg')
 
     def __str__(self):
-        return self.hname
+        return (self.hname+' - '+self.d_id.dname)
 
     def luxuries(self):
         return self.luxury_set_values_list('name', flat=True)
@@ -182,13 +182,14 @@ class Package(models.Model):
     review = models.IntegerField()
 
     def __str__(self):
-        return self.name
+        return (self.name+' - '+self.destination.dname)
 
 
 class Booking(models.Model):
 
     n_people = models.IntegerField()
     trip_date = models.DateField()
+    booking_date = models.DateField(null=True, blank=True, auto_now_add=True)
     total = models.FloatField()
     rooms = models.IntegerField()
     payment_mode = models.CharField(max_length=50)
