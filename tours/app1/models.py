@@ -182,7 +182,7 @@ class Package(models.Model):
     review = models.IntegerField()
 
     def __str__(self):
-        return (self.name+' : '+self.destination.dname)
+        return (self.name+' - '+self.destination.dname)
 
 
 class Booking(models.Model):
