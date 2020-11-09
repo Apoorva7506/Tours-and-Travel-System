@@ -123,22 +123,23 @@
                                     <span>
                         <i class="fa fa-angle-right"></i> {{i.days}} days 
                       </span>
-                                    <i class="fa fa-angle-right"></i> Tier {{i.hotel.tier}} accomodation
-                                </p>
-                                <p>
-                                    <span>
-                        <i class="fa fa-angle-right"></i> {{i.mot.t_type}} Rransportation
-                      </span> {% if 'Railway' in i.mot.t_type %}
-                                    <span>
+                                    <p>
+                                        <i class="fa fa-angle-right"></i> Tier {{i.hotel.tier}} accomodation
+                                    </p>
+                                    <p>
+                                        <span>
+            <i class="fa fa-angle-right"></i> {{i.mot.t_type}} Transportation
+          </span> {% if 'Railway' in i.mot.t_type %}
+                                        <span>
                         <i class="fa fa-angle-right"></i> {{i.mot.c_class}} Compartment
                       </span> {% elif 'Roadway' in i.mot.t_type %}
-                                    <span>
+                                        <span>
                         <i class="fa fa-angle-right"></i> {{i.mot.cartype}} Car
                       </span> {% elif 'Airway' in i.mot.t_type %}
-                                    <span>
+                                        <span>
                         <i class="fa fa-angle-right"></i> {{i.mot.A_class}} Class
                       </span> {% endif %}
-                                </p>
+                                    </p>
                             </div>
                             <div class="packages-review">
                                 <p><span>{{i.review}} &nbsp;</span>
