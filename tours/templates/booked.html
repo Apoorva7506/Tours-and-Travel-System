@@ -23,7 +23,7 @@
                 {% for i in b %}
                 <div class="col-md-4 col-sm-6">
                     <div class="single-package-item">
-                        <img src="{{i.package.ppic.url}}" alt="package-place" />
+                        <img src="{{i.package.ppic.url}}" alt="package-place" style="height:200px;width:100%" />
                         <div class="single-package-item-txt">
                             <h3>{{i.package.name}} <span class="pull-right"> <i class="fa fa-rupee"></i>{{i.total}}</span></h3>
                             <div class="packages-para">
@@ -54,7 +54,7 @@
                        
                         <i class="fa fa-angle-right"></i> {{i.package.days}} Days 
                       </span>
-
+                    </p><p>
 
                                     <i class="fa fa-angle-right"></i> Tier {{i.package.hotel.tier}} accomodation</p>
 
